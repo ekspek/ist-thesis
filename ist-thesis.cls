@@ -2,6 +2,7 @@
 \ProvidesClass{ist-thesis}[2018/11/28 v0.0.1 Unofficial IST thesis class]
 
 \RequirePackage{etoolbox}
+\RequirePackage{ifluatex}
 \RequirePackage{ifxetex}
 \RequirePackage{ifpdf}
 
@@ -10,7 +11,17 @@
 \ExecuteOptions{}
 \ProcessOptions\relax
 
-\LoadClass{article}
+\LoadClass{report}
+
+% Unicode boolean for either XeTeX or LuaTeX
+\newbool{unicode}
+\ifbool{xetex}{
+	\booltrue{unicode}
+}{
+	\ifbool{luatex}
+		{ \booltrue{unicode} }
+		{ \boolfalse{unicode} }
+}
 
 \RequirePackage{mathtools}
 \RequirePackage{graphicx}
@@ -18,8 +29,8 @@
 \RequirePackage[hidelinks]{hyperref}
 \RequirePackage{geometry}
 
-\ifbool{xetex}{
-	\RequirePackage{fontspec}
+\ifbool{unicode}{
+	\RequirePackage{mathspec}
 	\defaultfontfeatures{Ligatures = TeX}
 	\setmainfont[
 		UprightFont = *-regular,
@@ -27,8 +38,15 @@
 		BoldFont = *-bold,
 		ItalicFont = *-italic,
 		BoldItalicFont = *-bolditalic]{texgyreheros}
+	\setmathfont(Digits)[
+		UprightFont = *-regular,
+		Extension = .otf,
+		BoldFont = *-bold,
+		ItalicFont = *-italic,
+		BoldItalicFont = *-bolditalic]{texgyreheros}
 	\setmonofont[Scale = 1.14]{inconsolata}
 	
+	% == Language Settings == %
 	\RequirePackage{polyglossia}
 	\setmainlanguage{portuges}
 	\setotherlanguage[variant = british]{english}
@@ -39,8 +57,10 @@
 	\renewcommand{\familydefault}{\sfdefault}
 	\RequirePackage[scaled = 1.14]{inconsolata}
 	
+	% == Language Settings == %
 	\RequirePackage[portuguese]{babel}
 }
+\RequirePackage{newtxsf}
 
 \RequirePackage{microtype}
 \RequirePackage{caption}
