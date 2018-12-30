@@ -20,16 +20,21 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2018/11/28 v0.0.1 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2018/12/30 v0.0.2 Unofficial IST thesis class]
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
 \RequirePackage{ifxetex}
 \RequirePackage{ifpdf}
 
+\newbool{@portuguese}
+\newbool{@english}
+
+\DeclareOption{portuguese}	{\booltrue{@portuguese}}
+\DeclareOption{english}		{\booltrue{@english}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
-\ExecuteOptions{}
+\ExecuteOptions{portuguese}
 \ProcessOptions\relax
 
 \LoadClass{report}
@@ -51,35 +56,37 @@
 \RequirePackage{geometry}
 
 \ifbool{unicode}{
-	\RequirePackage{mathspec}
-	\defaultfontfeatures{Ligatures = TeX}
+	\RequirePackage[no-math]{fontspec}
 	\setmainfont[
 		UprightFont = *-regular,
 		Extension = .otf,
 		BoldFont = *-bold,
 		ItalicFont = *-italic,
 		BoldItalicFont = *-bolditalic]{texgyreheros}
-	\setmathfont(Digits)[
-		UprightFont = *-regular,
-		Extension = .otf,
-		BoldFont = *-bold,
-		ItalicFont = *-italic,
-		BoldItalicFont = *-bolditalic]{texgyreheros}
 	\setmonofont[Scale = 1.14]{inconsolata}
-	
+
 	% == Language Settings == %
 	\RequirePackage{polyglossia}
-	\setmainlanguage{portuges}
-	\setotherlanguage[variant = british]{english}
+	\ifbool{@portuguese}{
+		\setmainlanguage{portuges}
+		\setotherlanguage[variant = british]{english}
+	}{
+		\setmainlanguage[variant = british]{english}
+		\setotherlanguage{portuges}
+	}
 }{
 	\RequirePackage[utf8]{inputenc}
 	\RequirePackage[T1]{fontenc}
 	\RequirePackage{tgheros}
 	\renewcommand{\familydefault}{\sfdefault}
 	\RequirePackage[scaled = 1.14]{inconsolata}
-	
+
 	% == Language Settings == %
-	\RequirePackage[portuguese]{babel}
+	\ifbool{@portuguese}
+		{ \PassOptionsToPackage{english, main = portuguese}{babel} }
+		{ \PassOptionsToPackage{portuguese, main = english}{babel} }
+
+	\RequirePackage{babel}
 }
 \RequirePackage{newtxsf}
 
