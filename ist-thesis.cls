@@ -29,9 +29,11 @@
 
 \newbool{@portuguese}
 \newbool{@english}
+\newbool{@origmath}
 
 \DeclareOption{portuguese}	{\booltrue{@portuguese}}
 \DeclareOption{english}		{\booltrue{@english}}
+\DeclareOption{origmath}	{\booltrue{@origmath}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 \ExecuteOptions{portuguese}
@@ -88,7 +90,7 @@
 
 	\RequirePackage{babel}
 }
-\RequirePackage{newtxsf}
+\ifbool{@origmath}{}{\RequirePackage{newtxsf}}
 
 \RequirePackage{microtype}
 \RequirePackage{caption}
