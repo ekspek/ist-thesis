@@ -30,10 +30,12 @@
 \newbool{@portuguese}
 \newbool{@english}
 \newbool{@origmath}
+\newbool{@bw}
 
 \DeclareOption{portuguese}	{\booltrue{@portuguese}}
 \DeclareOption{english}		{\booltrue{@english}}
 \DeclareOption{origmath}	{\booltrue{@origmath}}
+\DeclareOption{bw}			{\booltrue{@bw}}
 %\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 \PassOptionsToClass{twoside}{report}
@@ -101,6 +103,25 @@
 
 \geometry{a4paper,margin = 2.5cm}
 \renewcommand\baselinestretch{1.5}
+
+\ifbool{@bw}{
+	\definecolor{ist-cyan}{cmyk}{1,1,1,1}
+	\definecolor{ist-gray}{cmyk}{1,1,1,1}
+}{
+	\definecolor{ist-cyan}{cmyk}{1,0,0,0}
+	\definecolor{ist-gray}{cmyk}{0.2,0,0,0.8}
+}
+
+\hypersetup{colorlinks,
+	linkcolor	= {ist-cyan},
+	citecolor	= {ist-cyan},
+	urlcolor	= {ist-cyan}
+}
+
+\notbool{@bw}{
+	\preto\tableofcontents{\hypersetup{linkcolor = {black}}}
+	\appto\tableofcontents{\hypersetup{linkcolor = {ist-cyan}}}
+}
 
 % ------ CLASS COMMANDS ------
 \newrobustcmd{\makecover}{

@@ -16,18 +16,20 @@
 
 \cleardoublepage
 
-{\hypersetup{linkcolor = {black}}\tableofcontents}
+\tableofcontents
 
 \cleardoublepage
 
 \chapter{Introduction}
 
-\begin{gather*}
-	x = 2y \\
+\begin{gather}
+	x = 2y \label{eq:equation1}\\
 	\mathbb{P}\left(\frac{X_1 + \cdots + X_n}{\sqrt{n}} \leq y\right) \rightarrow \mathrm{R}(y) = \int_{-\infty}^{y} \frac{e^{-t^2/2}}{\sqrt{2\pi}}dt \qquad \mathrm{as} \quad n \rightarrow \infty
-\end{gather*}
+\end{gather}
 
 \section{First section}
+
+This links to equation \ref{eq:equation1}.
 
 \lipsum
 
