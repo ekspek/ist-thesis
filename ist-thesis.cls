@@ -152,37 +152,27 @@
 
 \newrobustcmd{\makecover}{
 	\begin{titlepage}
-	
 	\includegraphics[viewport=9.5cm 11cm 0cm 0cm,scale=0.29]{IST_A_CMYK_POS}
-	
 	\begin{center}
 		\vspace*{17mm}
 		\includegraphics[width=0.5\linewidth]{example-image}
-		\vspace{\fill}
-		
+		\par\vspace{\fill}
 		{\LARGE\bfseries \ttitle}
-		
-		\vspace{10mm}
+		\par\vspace{10mm}
 		{\Large \tsubtitle}
-		
-		\vspace{10mm}
+		\par\vspace{10mm}
 		{\Large\bfseries \tauthor}
-		
-		\vspace{10mm}
+		\par\vspace{10mm}
 		\ifbool{@english}
 			{\large Thesis to obtain the Master of Science Degree in}
 			{\large Dissertação para obtenção do Grau de Mestre em}
-		
-		\medskip
+		\par\medskip
 		{\LARGE\bfseries \tdegree}
-		
-		\vspace{10mm}
+		\par\vspace{10mm}
 		{\large \ifbool{@english}{Supervisor:}{Orientador:} \tsupervisor}
-		
-		\vspace{7mm}
+		\par\vspace{7mm}
 		{\large\bfseries \ifbool{@english}{Examination Committee}{Júri}}
-		
-		\vspace{3mm}{\large
+		\par\vspace{3mm}{\large
 			\renewcommand\arraystretch{0.9}
 			\begin{tabular}{r l}
 				\ifbool{@english}
@@ -193,12 +183,48 @@
 					{Members of the Committee:}{Vogais:}	& \tcommittee{}
 			\end{tabular}
 		}
-		
-		\vspace{10mm}
+		\par\vspace{10mm}
 		{\large\bfseries \tdate{}}
 	\end{center}
-	
 	\cleardoublepage
-	
 	\end{titlepage}
+}
+
+\newenvironment{dedication}{
+	\newpage
+	\vspace*{40mm}
+	\renewcommand\baselinestretch{1.1}
+	\itshape
+	\begin{flushright}
+}{
+	\end{flushright}
+	\cleardoublepage
+}
+
+\newenvironment{acknowledgements}{
+	\newpage
+	\ifbool{@english}
+		{ \section*{Acknowledgements} }
+		{ \section*{Agradecimentos} }
+	\par
+}{
+	\cleardoublepage
+}
+
+\newenvironment{tabstract}[1]{
+	\newpage
+	\newcommand*\ackkey[1]{#1}
+	\vspace*{60mm}
+	\begin{center}
+		\ifbool{@english}
+			{ \section*{Abstract} }
+			{ \section*{Resumo} }
+		\end{center}
+	\par\noindent
+}{
+	\par\vspace{\fill}
+	\ifbool{@english}
+		{ {\large \textbf{Keywords:} \ackkey{}} }
+		{ {\large \textbf{Palavras-Chave:} \ackkey{}} }
+	\cleardoublepage
 }
