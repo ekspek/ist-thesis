@@ -1,5 +1,5 @@
-  %% ist-report.cls
-  %% Copyright 2018 Daniel de Schiffart
+  %% ist-thesis.cls
+  %% Copyright 2019 Daniel de Schiffart
   %
   % This work may be distributed and/or modified under the
   % conditions of the LaTeX Project Public License, either version 1.3
@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2018/12/30 v0.0.2 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/02/02 v0.1.0 Unofficial IST thesis class]
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
@@ -36,7 +36,6 @@
 \DeclareOption{english}		{\booltrue{@english}}
 \DeclareOption{origmath}	{\booltrue{@origmath}}
 \DeclareOption{bw}			{\booltrue{@bw}}
-%\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 \PassOptionsToClass{twoside}{report}
 \ExecuteOptions{portuguese}
@@ -44,7 +43,7 @@
 
 \LoadClass{report}
 
-% Unicode boolean for either XeTeX or LuaTeX
+% - Unicode boolean for either XeTeX or LuaTeX - %
 \newbool{unicode}
 \ifbool{xetex}{
 	\booltrue{unicode}
@@ -72,7 +71,7 @@
 		BoldItalicFont = *-bolditalic]{texgyreheros}
 	\setmonofont[Scale = 1.14]{inconsolata}
 
-	% == Language Settings == %
+	% - Language Settings - %
 	\RequirePackage{polyglossia}
 	\ifbool{@portuguese}{
 		\setmainlanguage{portuges}
@@ -88,7 +87,7 @@
 	\renewcommand{\familydefault}{\sfdefault}
 	\RequirePackage[scaled = 1.14]{inconsolata}
 
-	% == Language Settings == %
+	% - Language Settings - %
 	\ifbool{@portuguese}
 		{ \PassOptionsToPackage{english, main = portuguese}{babel} }
 		{ \PassOptionsToPackage{portuguese, main = english}{babel} }
@@ -123,7 +122,7 @@
 	\appto\tableofcontents{\hypersetup{linkcolor = {ist-cyan}}}
 }
 
-% ------ CLASS COMMANDS ------
+% - Class Commands - %
 \newrobustcmd{\makecover}{
 	\begin{titlepage}
 
