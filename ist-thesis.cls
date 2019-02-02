@@ -123,51 +123,82 @@
 }
 
 % - Class Commands - %
+\newrobustcmd*\tsubtitle{}
+\newrobustcmd*\tsupervisor{Prof. Lorem Ipsum}
+\newrobustcmd*\tchairperson{Prof. Lorem Ipsum}
+\newrobustcmd*\tcommittee{Prof. Lorem Ipsum}
+\newrobustcmd*\tdate{\today}
+\newrobustcmd*\tinstitution{Instituto Superior Técnico}
+
+\ifbool{@english}{
+	\newrobustcmd*\ttitle{Thesis Title}
+	\newrobustcmd*\tauthor{Thesis Author}
+	\newrobustcmd*\tdegree{Something Engineering}
+}{
+	\newrobustcmd*\ttitle{Título da Dissertação}
+	\newrobustcmd*\tauthor{Autor da Dissertação}
+	\newrobustcmd*\tdegree{Engenharia de Qualquer Coisa}
+}
+
+\newrobustcmd*\settitle[1]{\renewcommand\ttitle{#1}}
+\newrobustcmd*\setsubtitle[1]{\renewcommand\tsubtitle{#1}}
+\newrobustcmd*\setauthor[1]{\renewcommand\tauthor{#1}}
+\newrobustcmd*\setdegree[1]{\renewcommand\tdegree{#1}}
+\newrobustcmd*\setinstitution[1]{\renewcommand\tinstitution{#1}}
+\newrobustcmd*\setdate[1]{\renewcommand\tdate{#1}}
+\newrobustcmd*\setsupervisor[1]{\renewcommand\tsupervisor{#1}}
+\newrobustcmd*\setchairperson[1]{\renewcommand\tchairperson{#1}}
+\newrobustcmd*\setcommittee[1]{\renewcommand\tcommittee{#1}}
+
 \newrobustcmd{\makecover}{
 	\begin{titlepage}
-
+	
 	\includegraphics[viewport=9.5cm 11cm 0cm 0cm,scale=0.29]{IST_A_CMYK_POS}
-
+	
 	\begin{center}
-		\vspace*{15mm}
+		\vspace*{17mm}
 		\includegraphics[width=0.5\linewidth]{example-image}
 		\vspace{\fill}
-
-		{\LARGE\bfseries Thesis Title}
-
+		
+		{\LARGE\bfseries \ttitle}
+		
 		\vspace{10mm}
-		{\Large Thesis Subtitle}
-
+		{\Large \tsubtitle}
+		
 		\vspace{10mm}
-		{\Large\bfseries Thesis Author}
-
+		{\Large\bfseries \tauthor}
+		
 		\vspace{10mm}
-		{\large Thesis to obtain the master's degree in}
-
+		\ifbool{@english}
+			{\large Thesis to obtain the Master of Science Degree in}
+			{\large Dissertação para obtenção do Grau de Mestre em}
+		
 		\medskip
-		{\LARGE\bfseries Degree Title}
-
+		{\LARGE\bfseries \tdegree}
+		
 		\vspace{10mm}
-		{\large Supervisor: Prof. Lorem Ipsum}
-
+		{\large \ifbool{@english}{Supervisor:}{Orientador:} \tsupervisor}
+		
 		\vspace{7mm}
-		{\large\bfseries Evaluation Committee}
-
+		{\large\bfseries \ifbool{@english}{Examination Committee}{Júri}}
+		
 		\vspace{3mm}{\large
 			\renewcommand\arraystretch{0.9}
 			\begin{tabular}{r l}
-				Chairperson:				& Prof. Lorem Ipsum		\\
-				Supervisor:					& Prof. Lorem Ipsum		\\
-			Members of the committee:		& Prof. Lorem Ipsum		\\
-											& Prof. Lorem Ipsum
+				\ifbool{@english}
+					{Chairperson:}{Presidente:}				& \tchairperson{}		\\
+				\ifbool{@english}
+					{Supervisor:}{Orientador:}				& \tsupervisor{}		\\
+				\ifbool{@english}
+					{Members of the Committee:}{Vogais:}	& \tcommittee{}
 			\end{tabular}
 		}
-
+		
 		\vspace{10mm}
-		{\large\bfseries Month and Year}
+		{\large\bfseries \tdate{}}
 	\end{center}
-
-	\end{titlepage}
-
+	
 	\cleardoublepage
+	
+	\end{titlepage}
 }
