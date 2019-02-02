@@ -1,4 +1,4 @@
-# Modelo de Tese em LaTeX Não Oficial do Instituto Superior Técnico
+# Modelo LaTeX de Tese Não Oficial do Instituto Superior Técnico
 
 Modelo de tese de mestrado em LaTeX não oficial para documentos escritos para o Instituto Superior Técnico. Este projeto tem como objetivo criar uma classe de LaTeX que define todas as restrições definidas pelo Instituto Superior Técnico por defeito quando incluída e implementa funções adicionais para definir pormenores do documento e permitir um certo nível de personalização dentro das restrições possíveis.
 
@@ -20,6 +20,8 @@ Para compilar um documento em LaTeX com esta classe, só é necessário fazer do
 
 Qualquer documento que utilize esta classe pode ser compilado da mesma maneira que a maior parte dos documentos LaTeX, sem configurações adicionais. Num serviço como o [Overleaf](https://www.overleaf.com/ "Overleaf"), basta fazer upload da classe e compilar. Para uma instalação local, basta correr o compilador através do editor de eleição ou através de `pdflatex doc.tex` ou `xelatex doc.tex` na linha de comandos, onde `doc.tex` é o documento a ser compilado.
 
+No entanto, é necessária caução quando o documento for compilado com bibliografia e glossário. Ajuda para estes tópicos específicos será incluída na documentação.
+
 ### Logótipos
 
 Os logótipos oficiais do Instituto Superior Técnico não estão incluídos neste repositório, mas podem ser encontrados na [página oficial](https://tecnico.ulisboa.pt/pt/sobre-o-tecnico/institucional/logo-e-manual-de-identidade/). A utilização destes logótipos é obrigatória e o repositório tem _placeholders_, ficheiros com nome, tamanho e estrutura iguais aos logótipos oficiais, colocados no sítio certo para serem substituídos pelos ficheiros corretos.
@@ -30,15 +32,25 @@ A documentação que irá ser disponibilizada irá incluir detalhes sobre o cont
 
 Irá ser também incluído um exemplo de uma tese com formato *lorem ipsum* para exemplificar algumas das funções da classe em si e também algumas (na minha opinião) boas práticas na escrita de documentos em LaTeX.
 
+Poderá também vir a ser incluído um documento de ajuda com a criação da tese, separado da documentação oficial, para auxiliar em diversos aspetos de LaTeX.
+
 ## Erros, Problemas e Sugestões
 
-Problemas com utilização da classe podem ser reportados aqui mesmo no GitHub. Contribuições em qualquer aspeto do projeto são bem-vindas!
+Problemas com utilização da classe podem ser reportados aqui mesmo no GitHub ou contactando-me a mim ou a outros contribuidores diretamente. Contribuições em qualquer aspeto do projeto são bem-vindas!
+
+Os erros, objetivos e outras discussões podem ser criadas e encontradas na página de [*Issues*](https://github.com/ekspek/ist-thesis/issues) do GitHub.
+
+### Estado Atual do Projeto
+
+O projeto neste momento encontra-se em desenvolvimento, não estando num estado 100% utilizável para qualquer tese ou dissertação. No entanto, está a ser feito progresso rapidamente. Planeamos ter o projeto concluído para utilização básica (sem documentação) antes do início do próximo semestre.
+
+O progresso pode também ser observado na página de [*Issues*](https://github.com/ekspek/ist-thesis/issues) do GitHub.
 
 ## Referências
 
-Regulamentos do relatório retirados do [Guia de Preparação da Dissertação](https://academica.tecnico.ulisboa.pt/files/sites/54/guia-de-preparacao-da-dissertacao-1516.pdf "Guia de Preparação da Dissertação") da Direção Académica do Instituto Superior Técnico.
+Os regulamentos de elaboração da tese foram retirados do [Guia de Preparação da Dissertação](https://academica.tecnico.ulisboa.pt/files/sites/54/guia-de-preparacao-da-dissertacao-1516.pdf "Guia de Preparação da Dissertação") da Direção Académica do Instituto Superior Técnico.
 
-A lista completa de recursos será disponibilizada na documentação.
+Inspiração e referência também foram retiradas do excelente [conjunto de documentos para elaboração da tese](https://fenix.tecnico.ulisboa.pt/homepage/ist31052/documentos-para-elaboracao-da-tese), criados e distribuídos pelo Professor André Marta do Instituto Superior Técnico.
 
 ## Licença
 
