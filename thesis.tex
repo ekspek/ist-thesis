@@ -1,13 +1,32 @@
 % arara: xelatex: { synctex: yes, shell: yes }
-\documentclass{ist-thesis}
+\documentclass[english]{ist-thesis}
+
+\graphicspath{{graphics/}}
+\usepackage{lipsum}
 
 \begin{document}
 
-Hello World!
+\input{cover}
+
+\section*{Acknowledgements}
+
+\cleardoublepage
+
+\section*{Abstract}
+
+\cleardoublepage
+
+{\hypersetup{linkcolor = {black}}\tableofcontents}
+
+\cleardoublepage
+
+\chapter{Introduction}
 
 \begin{gather*}
 	x = 2y \\
 	\mathbb{P}\left(\frac{X_1 + \cdots + X_n}{\sqrt{n}} \leq y\right) \rightarrow \mathrm{R}(y) = \int_{-\infty}^{y} \frac{e^{-t^2/2}}{\sqrt{2\pi}}dt \qquad \mathrm{as} \quad n \rightarrow \infty
 \end{gather*}
+
+\section{First section}
 
 \end{document}

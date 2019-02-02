@@ -34,8 +34,9 @@
 \DeclareOption{portuguese}	{\booltrue{@portuguese}}
 \DeclareOption{english}		{\booltrue{@english}}
 \DeclareOption{origmath}	{\booltrue{@origmath}}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+%\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
+\PassOptionsToClass{twoside}{report}
 \ExecuteOptions{portuguese}
 \ProcessOptions\relax
 
@@ -50,6 +51,8 @@
 		{ \booltrue{unicode} }
 		{ \boolfalse{unicode} }
 }
+
+\ifbool{@english}{\boolfalse{@portuguese}}
 
 \RequirePackage{mathtools}
 \RequirePackage{graphicx}
@@ -90,14 +93,11 @@
 
 	\RequirePackage{babel}
 }
-\ifbool{@origmath}{}{\RequirePackage{newtxsf}}
+\notbool{@origmath}{\RequirePackage{newtxsf}}{}
 
 \RequirePackage{microtype}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 
-\geometry{a4paper,
-	vmargin = 2.5cm,
-	hmargin = 2.5cm,
-}
+\geometry{a4paper,margin = 2.5cm}
 \renewcommand\baselinestretch{1.5}
