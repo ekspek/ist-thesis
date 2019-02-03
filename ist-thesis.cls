@@ -120,6 +120,10 @@
 \notbool{@bw}{
 	\preto\tableofcontents{\hypersetup{linkcolor = {black}}}
 	\appto\tableofcontents{\hypersetup{linkcolor = {ist-cyan}}}
+	\preto\listoffigures{\hypersetup{linkcolor = {black}}}
+	\appto\listoffigures{\hypersetup{linkcolor = {ist-cyan}}}
+	\preto\listoftables{\hypersetup{linkcolor = {black}}}
+	\appto\listoftables{\hypersetup{linkcolor = {ist-cyan}}}
 }
 
 % - Class Commands - %
@@ -209,7 +213,6 @@
 	\ifbool{@english}
 		{ \section*{Acknowledgements} }
 		{ \section*{Agradecimentos} }
-	\par
 }{
 	\cleardoublepage
 }
