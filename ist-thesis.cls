@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/02/02 v0.1.0 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/02/02 v0.2.0 Unofficial IST thesis class]
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
@@ -151,6 +151,8 @@
 \newrobustcmd*\setcommittee[1]{\renewcommand\tcommittee{#1}}
 
 \newrobustcmd{\makecover}{
+	\pagenumbering{roman}
+	\setcounter{page}{0}
 	\begin{titlepage}
 	\includegraphics[viewport=9.5cm 11cm 0cm 0cm,scale=0.29]{IST_A_CMYK_POS}
 	\begin{center}
@@ -203,6 +205,7 @@
 
 \newenvironment{acknowledgements}{
 	\newpage
+	\vspace*{30mm}
 	\ifbool{@english}
 		{ \section*{Acknowledgements} }
 		{ \section*{Agradecimentos} }
@@ -220,7 +223,6 @@
 			{ \section*{Abstract} }
 			{ \section*{Resumo} }
 		\end{center}
-	\par\noindent
 }{
 	\par\vspace{\fill}
 	\ifbool{@english}
@@ -228,3 +230,5 @@
 		{ {\large \textbf{Palavras-Chave:} \ackkey{}} }
 	\cleardoublepage
 }
+
+\newrobustcmd\mainstart{\cleardoublepage\pagenumbering{arabic}}
