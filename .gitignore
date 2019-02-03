@@ -2,9 +2,6 @@
 *.*~
 *.swp
 
-## Ignore pdf output
-thesis.pdf
-
 ## Ignore assisting documentation
 doc/extra/
 
