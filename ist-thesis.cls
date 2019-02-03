@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/02/03 v0.2.2 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/02/03 v0.2.3 Unofficial IST thesis class]
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
@@ -129,22 +129,24 @@
 
 % - Class Commands - %
 \newrobustcmd*\tsubtitle{}
-\newrobustcmd*\tsupervisor{Prof. Lorem Ipsum}
+\newrobustcmd*\tsupervisor{Prof. Lorem Ipsum \tand Prof. Lorem Ipsum}
 \newrobustcmd*\tchairperson{Prof. Lorem Ipsum}
-\newrobustcmd*\tcommittee{Prof. Lorem Ipsum}
-\newrobustcmd*\tdate{\today}
+\newrobustcmd*\tcommittee{Prof. Lorem Ipsum \tand Prof. Lorem Ipsum}
 \newrobustcmd*\tinstitution{Instituto Superior Técnico}
 \newrobustcmd*\tcoverimage{example-image}
 \newrobustcmd*\tcoverimagewidth{0.5}
+\newrobustcmd*\tand{\\ &}
 
 \ifbool{@english}{
-	\newrobustcmd*\ttitle{Thesis Title}
-	\newrobustcmd*\tauthor{Thesis Author}
-	\newrobustcmd*\tdegree{Something Engineering}
+	\newrobustcmd*\ttitle{[Thesis Title]}
+	\newrobustcmd*\tauthor{[Candidate Full Name]}
+	\newrobustcmd*\tdegree{[Scientific Field]}
+	\newrobustcmd*\tdate{[Month and Year]}
 }{
-	\newrobustcmd*\ttitle{Título da Dissertação}
-	\newrobustcmd*\tauthor{Autor da Dissertação}
-	\newrobustcmd*\tdegree{Engenharia de Qualquer Coisa}
+	\newrobustcmd*\ttitle{[Título da Dissertação]}
+	\newrobustcmd*\tauthor{[Nome Completo do(a) Candidato(a)]}
+	\newrobustcmd*\tdegree{[Nome do Curso]}
+	\newrobustcmd*\tdate{[Mês e Ano]}
 }
 
 \newrobustcmd*\settitle[1]{\renewcommand\ttitle{#1}}
@@ -182,11 +184,14 @@
 		\par\medskip
 		{\LARGE\bfseries \tdegree}
 		\par\vspace{10mm}
-		{\large \ifbool{@english}{Supervisor:}{Orientador:} \tsupervisor}
+		{\large\renewcommand\arraystretch{0.9}
+			\begin{tabular}{r l}
+				\ifbool{@english}{Supervisor:}{Orientador:} & \tsupervisor
+			\end{tabular}
+		}
 		\par\vspace{7mm}
 		{\large\bfseries \ifbool{@english}{Examination Committee}{Júri}}
-		\par\vspace{3mm}{\large
-			\renewcommand\arraystretch{0.9}
+		\par\vspace{3mm}{\large\renewcommand\arraystretch{0.9}
 			\begin{tabular}{r l}
 				\ifbool{@english}
 					{Chairperson:}{Presidente:}				& \tchairperson{}		\\
