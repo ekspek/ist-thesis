@@ -99,6 +99,7 @@
 \RequirePackage{microtype}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
+\RequirePackage{tocbibind}
 
 \geometry{a4paper,margin = 2.5cm}
 \renewcommand\baselinestretch{1.5}
@@ -118,12 +119,12 @@
 }
 
 \notbool{@bw}{
-	\preto\tableofcontents{\hypersetup{linkcolor = {black}}}
-	\appto\tableofcontents{\hypersetup{linkcolor = {ist-cyan}}}
-	\preto\listoffigures{\hypersetup{linkcolor = {black}}}
-	\appto\listoffigures{\hypersetup{linkcolor = {ist-cyan}}}
-	\preto\listoftables{\hypersetup{linkcolor = {black}}}
-	\appto\listoftables{\hypersetup{linkcolor = {ist-cyan}}}
+	\preto\tableofcontents{\begingroup\hypersetup{linkcolor = black}}
+	\appto\tableofcontents{\endgroup}
+	\preto\listoffigures{\begingroup\hypersetup{linkcolor = black}}
+	\appto\listoffigures{\endgroup}
+	\preto\listoftables{\begingroup\hypersetup{linkcolor = black}}
+	\appto\listoftables{\endgroup}
 }
 
 % - Class Commands - %
