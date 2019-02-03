@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/02/02 v0.2.0 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/02/03 v0.2.2 Unofficial IST thesis class]
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
@@ -134,6 +134,8 @@
 \newrobustcmd*\tcommittee{Prof. Lorem Ipsum}
 \newrobustcmd*\tdate{\today}
 \newrobustcmd*\tinstitution{Instituto Superior Técnico}
+\newrobustcmd*\tcoverimage{example-image}
+\newrobustcmd*\tcoverimagewidth{0.5}
 
 \ifbool{@english}{
 	\newrobustcmd*\ttitle{Thesis Title}
@@ -154,6 +156,10 @@
 \newrobustcmd*\setsupervisor[1]{\renewcommand\tsupervisor{#1}}
 \newrobustcmd*\setchairperson[1]{\renewcommand\tchairperson{#1}}
 \newrobustcmd*\setcommittee[1]{\renewcommand\tcommittee{#1}}
+\newrobustcmd*\setcoverimage[2][0.5]{
+	\renewcommand\tcoverimage{#2}
+	\renewcommand\tcoverimagewidth{#1}
+}
 
 \newrobustcmd{\makecover}{
 	\pagenumbering{roman}
@@ -162,7 +168,7 @@
 	\includegraphics[viewport=9.5cm 11cm 0cm 0cm,scale=0.29]{IST_A_CMYK_POS}
 	\begin{center}
 		\vspace*{17mm}
-		\includegraphics[width=0.5\linewidth]{example-image}
+		\includegraphics[width=\tcoverimagewidth\linewidth]{\tcoverimage}
 		\par\vspace{\fill}
 		{\LARGE\bfseries \ttitle}
 		\par\vspace{10mm}
