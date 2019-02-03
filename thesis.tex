@@ -1,6 +1,10 @@
 % arara: xelatex: { synctex: yes, shell: yes }
 \documentclass[portuguese]{ist-thesis}
 
+\usepackage{csquotes}
+\usepackage{biblatex}
+\addbibresource{main.bib}
+
 \usepackage{lipsum}
 \usepackage{booktabs}
 \usepackage{tikz}
@@ -139,5 +143,8 @@ Esta referência liga à equação \ref{eq:equation1}.
 \end{figure}
 
 \lipsum
+
+\nocite{latex-companion, fontcatalogue, latexwiki, ctan, texsx}
+\printbibliography[heading = bibintoc]
 
 \end{document}
