@@ -1,0 +1,44 @@
+% arara: xelatex: { synctex: yes, shell: yes }
+\documentclass{../ist-thesis}
+
+\begin{document}
+
+\begin{center}
+	{\Huge\bfseries A classe \texttt{ist-thesis}}
+	\par\bigskip
+	{\Large Classe LaTeX de tese não oficial do Instituto Superior Técnico}
+	\par\bigskip\smallskip
+	Daniel Lopes de Schiffart \\
+	\url{https://github.com/ekspek/ist-thesis}
+\end{center}
+
+\bigskip\bigskip
+
+\begin{center}
+	\section*{Introdução}
+\end{center}
+Esta classe tem como objetivo preparar e formatar qualquer documento \LaTeX{} numa tese de mestrado de acordo com os regulamentos do Instituto Superior Técnico.
+
+\tableofcontents
+
+\clearpage
+
+\chapter{\textit{Quick Start} -- Os Básicos}
+
+Este capítulo está dedicado a cobrir os básicos para colocar a classe a funcionar em qualquer instalação de \LaTeX{}.
+
+\chapter{Comandos e Ambientes}
+
+Este capítulo contém a documentação oficial dos comandos e ambientes implementados na classe utilizáveis pelo utilizador e as suas funções e dependências dentro do documento que as utiliza. Também incluídas estão algumas modificações feitas a documentos base de \LaTeX{} para funcionarem corretamente com as funções implementadas.
+
+Estes comandos podem ser separados em duas categorias, relevantes para a capa e informação do documento, na secção \ref{sec:metadata}, e para a estrutura e secções especiais, na secção \ref{sec:spec}.
+
+\section{Capa e Dados de Tese}\label{sec:metadata}
+
+Os comandos nesta secção são pertinentes aos dados do contexto da tese, como título, autor, e orientadores, por exemplo, e à aplicação destes dados na capa da tese.
+
+\section{Secções Especiais}\label{sec:spec}
+
+A descrição de comandos pertinentes à introdução de secções especiais na tese encontram-se nesta secção.
+
+\end{document}
