@@ -41,4 +41,19 @@ Os comandos nesta secção são pertinentes aos dados do contexto da tese, como 
 
 A descrição de comandos pertinentes à introdução de secções especiais na tese encontram-se nesta secção.
 
+\chapter{Implementação da Classe}
+
+Este capítulo é dedicado à descrição de como a classe e todas as suas funções foram implementadas dentro do contexto de \TeX{} e \LaTeX{}, com especial atenção às \textit{packages} utilizadas. Tem por isso um cariz mais técnico e não é necessário a sua leitura para qualquer utilização da classe.
+
+\section{Tipo de Letra}
+
+Em contraste com o tipo de letra de raíz de qualquer documento \LaTeX{}\footnotemark{}, \textit{Computer Modern}, o tipo de letra especificado pelo guia de preparação da dissertação, \textit{Arial} é muito distinto, mas igualmente (ou mais reconhecível). No entanto, um dos problemas é que este tipo de letra é muito mais omnipresente em sistemas com \textit{Windows} do que no restantes, como também na internet. É, por isso, um tipo de letra que não encontrou implementação nativa em \LaTeX{}.
+\footnotetext{Neste caso referimo-nos a documentos utilizando as classes base de \LaTeX{}, como \texttt{article}, \texttt{report}, ou \texttt{book}, entre outras.}
+
+No entanto, \textit{Arial} é baseado no tipo de letra \textit{Helvetica}, que é facilmente disponível online em vários formatos e codificações. Os dois tipos de letra são praticamente indistinguíveis, sendo o design de \textit{Arial} baseado fortemente em \textit{Helvetica} na altura da sua criação. Esta segunda opção, pela sua facilidade de obtenção, já encontrou várias implementações em \LaTeX{}.
+
+Para o tipo de letra base deste projeto escolhemos o tipo de letra \href{https://ctan.org/pkg/tex-gyre-heros}{\TeX{} Gyre Heros}, que está incluído em qualquer distribuição de \LaTeX{}. A razão desta escolha foi a sua facilidade de implementação e relativa solidez em várias misturas de propriedades, desde \textbf{negrito} a \textit{itálico} à {\bfseries\itshape mistura dos dois}, como também a caracteres estrangeiros, nomeadamente caracteres utilizados na língua portuguesa. A grande lacuna deste tipo de letra é a falta de tipografia matemática, uma lacuna que será discutida na secção \ref{sec:mathfont}.
+
+\subsection{\textit{Monoespaço}}
+
 \end{document}
