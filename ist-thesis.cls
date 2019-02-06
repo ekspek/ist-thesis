@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/02/03 v0.2.3 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/02/06 v0.2.4 Unofficial IST thesis class]
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
@@ -63,12 +63,13 @@
 
 \ifbool{unicode}{
 	\RequirePackage[no-math]{fontspec}
-	\setmainfont[
+	\setsansfont[
 		UprightFont = *-regular,
 		Extension = .otf,
 		BoldFont = *-bold,
 		ItalicFont = *-italic,
 		BoldItalicFont = *-bolditalic]{texgyreheros}
+	\renewcommand{\familydefault}{\sfdefault}
 	\setmonofont[Scale = 1.14]{inconsolata}
 
 	% - Language Settings - %
@@ -97,8 +98,6 @@
 \notbool{@origmath}{\RequirePackage{newtxsf}}{}
 
 \RequirePackage{microtype}
-\RequirePackage{caption}
-\RequirePackage{subcaption}
 \RequirePackage{tocbibind}
 
 \geometry{a4paper,margin = 2.5cm}

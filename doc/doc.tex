@@ -1,6 +1,13 @@
 % arara: xelatex: { synctex: yes, shell: yes }
 \documentclass{../ist-thesis}
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{makecell}
+\usepackage{metalogo}
+\usepackage{booktabs}
+\newrobustcmd*\package[1]{\href{https://ctan.org/pkg/#1}{\textcolor{ist-cyan}{\texttt{#1}}}}
+
 \begin{document}
 
 \begin{center}
@@ -43,9 +50,26 @@ A descrição de comandos pertinentes à introdução de secções especiais na 
 
 \chapter{Implementação da Classe}
 
-Este capítulo é dedicado à descrição de como a classe e todas as suas funções foram implementadas dentro do contexto de \TeX{} e \LaTeX{}, com especial atenção às \textit{packages} utilizadas. Tem por isso um cariz mais técnico e não é necessário a sua leitura para qualquer utilização da classe.
+Este capítulo é dedicado à descrição de como a classe e todas as suas funções foram implementadas dentro do contexto de \TeX{} e \LaTeX{}, com especial atenção às \textit{packages} utilizadas. Tem por isso um cariz mais técnico e não é necessária a sua leitura para qualquer utilização da classe.
 
-\section{Tipo de Letra}
+\section{Estilo de Página}
+
+As definições da página estão reduzidas aos tamanhos de margem. Estes estão estabelecidos em $2.5$ centímetros para todos os lados, e são definidos utilizando a \textit{package} \package{geometry}.
+
+\section{Cores e Hiperligações}
+
+As hiperligações feitas na tese de exemplo e nesta documentação são feitas utilizando a \textit{package} \package{hyperref}, e estão definidas para utilizar texto colorido (ao invés de links rectangulares a rodear o texto, que é o comportamento por defeito). Esta definição pode ser mudada utilizando os comandos descritos na documentação oficial da \textit{package}.
+
+As cores utilizadas nestas hiperligações (e não só) foram definidas utilizando a \textit{package} \package{xcolor}. A cor mais utilizada é o ciano do Instituto Superior Técnico, dado pelo \href{https://tecnico.ulisboa.pt/pt/sobre-o-tecnico/institucional/logo-e-manual-de-identidade/}{Manual de Identidade}, e definida como $1,0,0,0$ na escala de CMYK. A segunda definida é um cinzento de $0.2,0,0,0.8$ na escala de CMYK, dada no mesmo documento referido.
+
+Esta cor está definida na classe como \texttt{ist-cyan}.
+Estas cores estão definidas na classe como \texttt{ist-cyan} e \texttt{ist-gray} e podem ser reutilizadas de acordo com a sintaxe da \textit{package} \package{xcolor}.
+
+\section{Tipos de Letra}
+
+O tópico de tipos de letra tem vários pormenores a descrever, mas a escolha de cada um deles prende-se à decisão da Direcção Académica em escolher \textit{Arial} como o tipo de letra principal do documento. A discussão de cada tipo de letra implementado inclui a justificação relevante, mas é importante referir que para os tipos de letra não principais que serão descritos podem ser substituídos de acordo com a preferência do utilizador da forma que entender. Em geral, as implementações de tipos de letra num documento feito sem e com a classe \texttt{ist-thesis} são idênticas e devem funcionar como suposto.
+
+\subsection{Tipo de Letra Principal}
 
 Em contraste com o tipo de letra de raíz de qualquer documento \LaTeX{}\footnotemark{}, \textit{Computer Modern}, o tipo de letra especificado pelo guia de preparação da dissertação, \textit{Arial} é muito distinto, mas igualmente (ou mais reconhecível). No entanto, um dos problemas é que este tipo de letra é muito mais omnipresente em sistemas com \textit{Windows} do que no restantes, como também na internet. É, por isso, um tipo de letra que não encontrou implementação nativa em \LaTeX{}.
 \footnotetext{Neste caso referimo-nos a documentos utilizando as classes base de \LaTeX{}, como \texttt{article}, \texttt{report}, ou \texttt{book}, entre outras.}
@@ -55,5 +79,84 @@ No entanto, \textit{Arial} é baseado no tipo de letra \textit{Helvetica}, que �
 Para o tipo de letra base deste projeto escolhemos o tipo de letra \href{https://ctan.org/pkg/tex-gyre-heros}{\TeX{} Gyre Heros}, que está incluído em qualquer distribuição de \LaTeX{}. A razão desta escolha foi a sua facilidade de implementação e relativa solidez em várias misturas de propriedades, desde \textbf{negrito} a \textit{itálico} à {\bfseries\itshape mistura dos dois}, como também a caracteres estrangeiros, nomeadamente caracteres utilizados na língua portuguesa. A grande lacuna deste tipo de letra é a falta de tipografia matemática, uma lacuna que será discutida na secção \ref{sec:mathfont}.
 
 \subsection{\textit{Monoespaço}}
+
+O tipo de letra monoespaçado escolhido para o projeto foi \texttt{Inconsolata}, pela aparência relativamente semelhante ao tipo de letra principal, mas principalmente por preferência pessoal. Embora este tipo de letra não seja extensivamente utilizado na maioria das teses, é fulcral na introdução de código de programação a meio do texto onde caracteres monoespaçados mantêm coerência entre cada linha.
+
+\subsection{Tipografia Matemática}
+\label{sec:mathfont}
+
+Como anteriormente referido neste capítulo, o tipo de letra utilizado para matemática não está incluído no tipo de letra principal utilizado e teve de ser seleccionado à parte.
+
+Para utilizadores com experiência em \LaTeX{}, o tipo de letra de raíz utilizado pelo \LaTeX{}, \textit{Computer Modern}, já inclui todas as funções necessárias para as mais variadas necessidades de escrita de textos matemáticos. E embora isto seja verdade, a colisão entre \textit{Arial} (ou \TeX{} Gyre Heros, neste caso) e \textit{Computer Modern} não é a mais agradável, o que levou à procura de uma alternativa mais satisfatória. Não obstante, para quem não se quiser preocupar com pormenores ou estiver satisfeito com o tipo de letra de matemática original, é incluída a opção \texttt{origmath} na classe para manter este tipo de letra.
+
+Neste projeto foi utilizada a \textit{package} \package{newtxsf}, que implementa um tipo de letra mais semelhante ao tipo de letra utilizado no resto do documento.
+
+\subsection{Tipos de Letra \textit{Serif}}
+
+Para os leitores mais perspicazes, podem ter reparado que ainda sobra uma família de tipos de letra por definir, os tipos de letra \textit{serif}.
+
+Para os leitores curiosos, passo a explicar. O \LaTeX{} implementa em cada documento duas famílias de tipos de letra principais, \textit{serif} e \textit{sans-serif}. Estes termos são utilizados geralmente (mesmo fora de qualquer contexto de \LaTeX{}) para descrever tipos de letra. O primeiro corresponde a tipos de letra mais pormenorizados, angulares e pontiagudos, sendo mais adequados a ler em papel. O segundo é utilizado para descrever tipos de letra mais simples e redondos, muito mais fáceis de ler em ecrãs ou outros suportes digitais onde o detalhe sacrifica alguma legibilidade. Para os leitores mais interessados deixo \href{https://en.wikipedia.org/wiki/Serif}{um link} que pode esclarecer o tópico.
+
+Por defeito, o \LaTeX{} utiliza tipos de letra \textit{serif}, como o já referido \textit{Computer Modern}, por defeito, deixando ao utilizador a opção de definir e utilizar a sua contrapartida \textit{sans-serif} em qualquer local no texto. No entanto, para o projeto em questão, de acordo com os regulamentos do Instituto Superior Técnico, utilizamos um tipo de letra \textit{sans-serif} como base, o que implica que está disponível a utilização de um tipo de letra \textit{serif} quando necessário.
+
+Como este tópico é de relativamente baixa relevância, deixámos este tipo de letra sem modificações, o que implica que quando é chamado, \textrm{como neste excerto}, obtemos o tipo de letra de raíz do \LaTeX{}.
+
+\subsection{Demonstrações}
+
+Os tipos de letra referidos nas secções anteriores estão demonstrados nesta secção. Por ordem, os tipos de letra normal (\textit{sans-serif}), itálico, maiúsculas pequenas, \textit{serif}, e matemático, todas acompanhadas pelo seu equivalente a negrito.
+
+\newrobustcmd*\textsample{Lorem ipsum dolor sit amet, consectetuer adipiscing elit.}
+\begin{quote}
+	\textsample \\
+	{\bfseries\textsample} \\
+	{\itshape\textsample} \\
+	{\bfseries\itshape\textsample} \\
+	{\scshape\textsample} \\
+	{\bfseries\scshape\textsample} \\
+	{\ttfamily\textsample} \\
+	{\bfseries\ttfamily\textsample} \\
+	{\rmfamily\textsample} \\
+	{\bfseries\rmfamily\textsample} \\
+	{$\textsample$} \\
+	{$\mathbf\textsample$} \\
+\end{quote}
+
+Também incluído aqui está uma demonstração de uma equação no tipo de letra \package{newtxsf} referido na secção \ref{sec:mathfont}.
+\begin{gather*}
+	\mathbb{P}\left(\frac{X_1 + \cdots + X_n}{\sqrt{n}} \leq y\right) \rightarrow \mathrm{R}(y) = \int_{-\infty}^{y} \frac{e^{-t^2/2}}{\sqrt{2\pi}}dt \qquad \mathrm{as} \quad n \rightarrow \infty
+\end{gather*}
+
+\section{\textit{Packages} Utilizadas}
+
+Fica nesta secção um resumo de todas as \textit{packages} utilizadas na implementação da classe.
+\begin{table}[ht]
+	\centering
+	\renewcommand\arraystretch{0.7}
+	\begin{tabular}{c|c}\toprule
+		pdf\LaTeX{}				& \makecell{\XeLaTeX{} or \\ \LuaLaTeX{}}	\\
+		\midrule
+		\multicolumn{2}{c}{\package{etoolbox}}				\\
+		\multicolumn{2}{c}{\package{ifluatex}}				\\
+		\multicolumn{2}{c}{\package{ifxetex}}				\\
+		\multicolumn{2}{c}{\package{ifpdf}}					\\
+		\multicolumn{2}{c}{\package{mathtools}}				\\
+		\multicolumn{2}{c}{\package{graphicx}}				\\
+		\multicolumn{2}{c}{\package{xcolor}}				\\
+		\multicolumn{2}{c}{\package{hyperref}}				\\
+		\multicolumn{2}{c}{\package{geometry}}				\\
+		\package{inputenc}		&							\\
+		\package{fontenc}		&							\\
+		\phantom{polyglossia}	& \package{fontspec}		\\
+		\package{babel}			& \package{polyglossia}		\\
+		\package{tgheros}		&							\\
+		\package{inconsolata}	&							\\
+		\multicolumn{2}{c}{\package{newtxsf}}				\\
+		\multicolumn{2}{c}{\package{microtype}}				\\
+		\multicolumn{2}{c}{\package{tocbibind}}				\\
+		\bottomrule
+	\end{tabular}
+	\caption{\textit{Packages} carregadas pela classe sem argumentos opcionais, dependendo do compilador utilizado.}
+	\label{tab:packages}
+\end{table}
 
 \end{document}
