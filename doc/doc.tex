@@ -28,7 +28,7 @@
 \bigskip\bigskip
 
 \begin{center}
-	\section*{Introdução}
+	\section*{Resumo}
 \end{center}
 Esta classe tem como objetivo preparar e formatar qualquer documento \LaTeX{} numa tese de mestrado de acordo com os regulamentos do Instituto Superior Técnico.
 
@@ -36,9 +36,35 @@ Esta classe tem como objetivo preparar e formatar qualquer documento \LaTeX{} nu
 
 \clearpage
 
-\chapter{\textit{Quick Start} -- Os Básicos}
+\section*{Introdução}
 
-Este capítulo está dedicado a cobrir os básicos para colocar a classe a funcionar em qualquer instalação de \LaTeX{}.
+Mal de mim se não deixasse umas palavras minhas aqui mesmo.
+
+Eu aprendi a utilizar \LaTeX{} à dois anos, no início quarto ano, e como toda a gente deve esperar, foi a escrever relatórios para as cadeiras do Técnico. Depois de ter sido feito refém de algumas horas a escrever relatórios de Telecomunicações e Projeto de Sistemas Digitais, peguei-lhe o gosto e tenho aprendido a pouco e pouco os limites do que se pode fazer com \LaTeX{} (que são muitos, \textit{spoiler alert}). Vendo os semestres a passar e a preparar-me para ter o Técnico nas costas, queria deixar qualquer coisa atrás escrita em \LaTeX{} para a malta mais nova de aeroespacial. Uma sebenta, uns apontamentos, umas resoluções, enfim, qualquer coisa. O tempo passou e com a preguiça lá ia adiando qualquer motivação que tivesse para isso, especialmente considerando que a última coisa que alguém quer ouvir falar nas férias é de cadeiras acabadas. Portanto peguei na única coisa que fazia sentido nesta reta final: gastar tempo com o modelo da tese meses antes sequer de começar.
+
+Este projeto começou no final do ano passado como uma brincadeira. Estava a começar a apanhar o ritmo do \LaTeX{} e começava a reparar o quanto reutilizava certas \textit{packages}, certas definições, enfim, sempre o mesmo código em cada relatório que fazia. Considerando que as classes de \LaTeX{} definiam já um molhe de coisas quando são carregadas, comecei a ter isso em conta, olhando para as classes de \LaTeX{} online, nem pensava que fosse capaz de escrever uma de raíz. Mas o aspeto mente; é pura e simplesmente código \LaTeX{}, e embora fossem precisos uns trambolhões, lá apareceu o código a pouco e pouco.
+
+Muito deste trabalho transpõe o que aprendi a escrever a classe \href{https://github.com/ekspek/ist-relatorio}{\texttt{ist-relatorio}}. Embora menos versátil, esta classe ainda colocou vários desafios na interface entre o utilizador e o \textit{output}, mas acho que em geral o produto final está com bom aspeto, e ainda preservando alguma versatilidade. Aliás, para provar essa versatilidade, decidi implementar esta mesma documentação utilizando a classe, só mesmo por curiosidade, para ver se resultava. Eu sei que o abuso do \textit{Arial} em todas as páginas queima os olhos a ver, mas o Técnico é que manda \verb|¯\_('_')_/¯|
+
+A inspiração principal de passar para a tese foi o meu prazo para tal a reduzir mais e mais, mas também observar os inúmeros modelos de tese que estão espalhados pela net, para as mais variadas universidades à volta do mundo. Não fazia sentido ver o Técnico ficar para trás, especialmente considerando a \textit{imensa imensa} progressividade tecnológica deste nosso cantinho da Universidade de Lisboa. Menções especiais para o modelo de tese da TUDelft, criado à imagem do \textit{Huisstijl} deles, que li e reli para aprender a criar classes.
+
+E como é óbvio, também muita inspiração foi retirada do modelo de tese do Professor André Marta, que ainda detém o \textit{de facto} modelo de \LaTeX{} do Técnico. Admiro a disponibilidade dele para partilhar o código dele sem restrições e o quão bem montado está, tanto que pensei em largar a ideia completamente e utilizar o código dele. Eu não quero de modo algum competir com o projeto do professor Marta, apenas considero duas abordagens diferentes ao mesmo problema. E promovo que olhem para o projeto e escolham, vejam na \href{https://fenix.tecnico.ulisboa.pt/homepage/ist31052/documentos-para-elaboracao-da-tese}{página do Fénix} do professor.
+
+Não tenho muito mais a acrescentar. Ficam aqui as palavras típicas, revejam o produto final, contactem-me se necessário, partilhem o projeto, contribuam se puderem, divulguem se gostarem do que está aqui feito ou deixem sugestões para o que podia ser melhor.
+
+Muito boa sorte com a vossa tese!
+
+\begin{flushright}\itshape
+	Daniel Lopes de Schiffart \\
+	Aluno 81479 \\
+	Fevereiro de 2019
+\end{flushright}
+
+\clearpage
+
+%\chapter{\textit{Quick Start} -- Os Básicos}
+
+%Este capítulo está dedicado a cobrir os básicos para colocar a classe a funcionar em qualquer instalação de \LaTeX{}.
 
 \chapter{Comandos e Ambientes}
 
@@ -108,16 +134,16 @@ Exemplo de utilização dos ambientes fornecidos. Note-se que no ambiente do res
 
 \begin{minted}{tex}
 \begin{dedication}
-	Para dedicar a quem quiser.
+    Para dedicar a quem quiser.
 \end{dedication}
 
 \begin{acknowledgements}
-	Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. He became so powerful... the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself.
+    Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying.
 \end{acknowledgements}
 
 
 \begin{tabstract}{Resumo, Palavras-Chave, Resumo Analítico, \textit{Abstract}}
-	Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
+    Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
 \end{tabstract}
 \end{minted}
 
