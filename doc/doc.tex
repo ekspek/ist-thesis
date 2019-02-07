@@ -48,8 +48,6 @@ Estes comandos podem ser separados em três categorias, relevantes para a capa e
 
 \section{Capa e Dados de Tese}\label{sec:metadata}
 
-%Os comandos nesta secção são pertinentes aos dados do contexto da tese, como título, autor, e orientadores, por exemplo, e à aplicação destes dados na capa da tese.
-
 A classe implementa um comando que permite criar a capa automaticamente, pedindo informação ao utilizador sobre os dados do documento e colocando-os no sítio certo. Para criar uma capa, basta utilizar o comando
 \begin{minted}{tex}
 \makecover
@@ -92,11 +90,54 @@ Para exemplificar o uso dos comandos da secção anterior, está aqui incluído 
 
 \section{Secções Especiais}\label{sec:spec}
 
-A descrição de comandos pertinentes à introdução de secções especiais na tese encontram-se nesta secção.
+Na escrita de uma tese existem certas secções que são escritas por grande parte dos autores. Algumas das secções descritas no guia da Direcção Académica estão por isso implementadas na classe utilizando ambientes\footnotemark{} \LaTeX{} especiais para lhes atribuir formatação especial e facilitar a escrita ao utilizador. São elas três, a dedicatória, os agradecimentos, e o resumo.
+\footnotetext{Ambientes em \LaTeX{} são macros parecidas com comandos, mas em vez de serem chamados uma vez e o seu conteúdo escrito dentro dos argumentos, os ambientes têm princípio e fim delimitados pelo comando \texttt{\textbackslash{}begin} e \texttt{\textbackslash{}end}. Consulte os exemplos da secção \ref{sec:env_example}.}
+
+Os ambientes estão defindos em \LaTeX{} como listado a seguir.
+\begin{description}
+	\item [\texttt{dedication}] Dedicatória.
+	\item [\texttt{acknowledgements}] Agradecimentos.
+	\item [\texttt{tabstract}] Resumo. Este ambiente introduz palavras-chave no final da página, que podem ser escritas via um argumento opcional do ambiente. Consulte a secção \ref{sec:env_example} para a sintaxe de utilização.
+\end{description}
+
+O texto escrito dentro destes ambientes é colocado numa página em separado para cada um, e aparecem no documento na ordem em que são escritos no texto.
+
+\subsection{Exemplo de Utilização}\label{sec:env_example}
+
+Exemplo de utilização dos ambientes fornecidos. Note-se que no ambiente do resumo (\texttt{tabstract}) é entregue um argumento extra, dentro de chavetas, que será impresso no final da página.
+
+\begin{minted}{tex}
+\begin{dedication}
+	Para dedicar a quem quiser.
+\end{dedication}
+
+\begin{acknowledgements}
+	Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. He became so powerful... the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself.
+\end{acknowledgements}
+
+
+\begin{tabstract}{Resumo, Palavras-Chave, Resumo Analítico, \textit{Abstract}}
+	Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
+\end{tabstract}
+\end{minted}
 
 \section{Comandos Internos}\label{sec:internal}
 
-Estes são utilizados para criar na capa e retornam os valores definidos pelo utilizador nos comandos originais. Estes são apenas utilizados internamente pela classe, mas podem ser utilizados pelo utilizador ao longo do documento para colocar o seu valor algures no texto.
+Estes são utilizados para criar na capa e retornam os valores definidos pelo utilizador nos comandos da secção \ref{sec:metadata}. Estes são apenas utilizados internamente pela classe, mas podem ser utilizados pelo utilizador ao longo do documento para colocar o seu valor algures no texto.
+
+\begin{minted}[fontsize = \small]{tex}
+\ttitle{}
+\tsubtitle{}
+\tauthor{}
+\tsupervisor{}
+\tdegree{}
+\tchairperson{}
+\tcommittee{}
+\tinstitution{}
+\tdate{}
+\tcoverimage{}
+\tcoverimagewidth{}
+\end{minted}
 
 \section{Lista Completa de Comandos e Ambientes}
 
