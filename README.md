@@ -1,5 +1,7 @@
 # Modelo LaTeX de Tese Não Oficial do Instituto Superior Técnico
 
+[Read this page in english.](README_EN.md)
+
 Modelo de tese de mestrado em LaTeX não oficial para documentos escritos para o Instituto Superior Técnico. Este projeto tem como objetivo criar uma classe de LaTeX que define todas as restrições definidas pelo Instituto Superior Técnico por defeito quando incluída e implementa funções adicionais para definir pormenores do documento e permitir um certo nível de personalização dentro das restrições possíveis.
 
 ## Utilização
