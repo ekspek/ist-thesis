@@ -18,7 +18,7 @@ Para compilar um documento em LaTeX com esta classe, só é necessário fazer do
 
 ### Compilação
 
-Qualquer documento que utilize esta classe pode ser compilado da mesma maneira que a maior parte dos documentos LaTeX, sem configurações adicionais. Num serviço como o [Overleaf](https://www.overleaf.com/ "Overleaf"), basta fazer upload da classe e compilar. Para uma instalação local, basta correr o compilador através do editor de eleição ou através de `pdflatex doc.tex` ou `xelatex doc.tex` na linha de comandos, onde `doc.tex` é o documento a ser compilado.
+Qualquer documento que utilize esta classe pode ser compilado da mesma maneira que a maior parte dos documentos LaTeX, sem configurações adicionais. Num serviço como o [Overleaf](https://www.overleaf.com/ "Overleaf"), basta fazer upload da classe e compilar. Para uma instalação local, basta correr o compilador através do editor de eleição ou através de `pdflatex main.tex` ou `xelatex main.tex` na linha de comandos, onde `main.tex` é o documento a ser compilado.
 
 No entanto, é necessária caução quando o documento for compilado com bibliografia e glossário. Ajuda para estes tópicos específicos será incluída na documentação.
 
@@ -28,9 +28,9 @@ Os logótipos oficiais do Instituto Superior Técnico não estão incluídos nes
 
 ## Documentação
 
-A documentação que irá ser disponibilizada irá incluir detalhes sobre o conteúdo da classe e como melhor fazer uso das funções incluídas.
+A documentação que é disponibilizada inclui detalhes sobre o conteúdo da classe e como melhor fazer uso das funções incluídas. Pode ser consultada neste [link](doc/doc.pdf) ou na pasta [doc](doc/) deste repositório, onde se encontra acompanhada do código fonte.
 
-Irá ser também incluído um exemplo de uma tese com formato *lorem ipsum* para exemplificar algumas das funções da classe em si e também algumas (na minha opinião) boas práticas na escrita de documentos em LaTeX.
+Está também incluído um exemplo de uma tese com formato *lorem ipsum* para exemplificar algumas das funções da classe em si e também algumas (na minha opinião) boas práticas na escrita de documentos em LaTeX. Esta encontra-se na base do repositório ou neste [link](thesis.pdf).
 
 Poderá também vir a ser incluído um documento de ajuda com a criação da tese, separado da documentação oficial, para auxiliar em diversos aspetos de LaTeX.
 
@@ -42,7 +42,7 @@ Os erros, objetivos e outras discussões podem ser criadas e encontradas na pág
 
 ### Estado Atual do Projeto
 
-O projeto neste momento encontra-se em desenvolvimento, não estando num estado 100% utilizável para qualquer tese ou dissertação. No entanto, está a ser feito progresso rapidamente. Planeamos ter o projeto concluído para utilização básica (sem documentação) antes do início do próximo semestre.
+O projeto neste momento encontra-se em desenvolvimento, não estando num estado 100% utilizável para qualquer tese ou dissertação. No entanto, a grande parte das funções está funcional e com o auxílio da documentação uma tese pode ser já escrita com esta classe, sendo apenas adicionar manualmente a bibliografia, o glossário e a lista de acrónimos e símbolos.
 
 O progresso pode também ser observado na página de [*Issues*](https://github.com/ekspek/ist-thesis/issues) do GitHub.
 
