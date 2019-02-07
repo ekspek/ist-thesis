@@ -9,7 +9,7 @@
 
 \usepackage{minted}
 \definecolor{bg}{rgb}{0.97,0.97,0.97}
-\setminted{bgcolor = bg, breaklines}
+\setminted{bgcolor = bg, breaklines, linenos}
 \setmintedinline{bgcolor = {}}
 
 \newrobustcmd*\package[1]{\href{https://ctan.org/pkg/#1}{\textcolor{ist-cyan}{\texttt{#1}}}}
@@ -44,17 +44,57 @@ Este capítulo está dedicado a cobrir os básicos para colocar a classe a funci
 
 Este capítulo contém a documentação oficial dos comandos e ambientes implementados na classe utilizáveis pelo utilizador e as suas funções e dependências dentro do documento que as utiliza. Também incluídas estão algumas modificações feitas a documentos base de \LaTeX{} para funcionarem corretamente com as funções implementadas.
 
-Estes comandos podem ser separados em duas categorias, relevantes para a capa e informação do documento, na secção \ref{sec:metadata}, e para a estrutura e secções especiais, na secção \ref{sec:spec}.
+Estes comandos podem ser separados em três categorias, relevantes para a capa e informação do documento, na secção \ref{sec:metadata}, para a estrutura e secções especiais, na secção \ref{sec:spec}, e comandos internos definidos e utilizados pela classe, na secção \ref{sec:internal}.
 
 \section{Capa e Dados de Tese}\label{sec:metadata}
 
-Os comandos nesta secção são pertinentes aos dados do contexto da tese, como título, autor, e orientadores, por exemplo, e à aplicação destes dados na capa da tese.
+%Os comandos nesta secção são pertinentes aos dados do contexto da tese, como título, autor, e orientadores, por exemplo, e à aplicação destes dados na capa da tese.
+
+A classe implementa um comando que permite criar a capa automaticamente, pedindo informação ao utilizador sobre os dados do documento e colocando-os no sítio certo. Para criar uma capa, basta utilizar o comando
+\begin{minted}{tex}
+\makecover
+\end{minted}
+Como o \LaTeX{} corre o código de cima para baixo, recomenda-se que o utilizador invoque este comando no início do documento, logo a seguir ao comando \mintinline{tex}{\begin{document}}.
+\begin{minted}{tex}
+\begin{document}
+
+\makecover
+\end{minted}
+
+Este comando por si só devolve uma capa com os dados preenchidos com valores pré-definidos. Para alterar estes valores, a classe fornece um conjunto de comandos, um para cada entrada da capa.
+
+\begin{description}
+	\item [\texttt{\textbackslash{}settitle\{}\textit{<título>}\texttt{\}}] Define o título.
+	\item [\texttt{\textbackslash{}setsubtitle\{}\textit{<subtítulo>}\texttt{\}}] Define o subtítulo.
+	\item [\texttt{\textbackslash{}setauthor\{}\textit{<autor(es)>}\texttt{\}}] Define o(s) autor(es). Para definir mais que um autor, a classe fornece um comando para separar autores, o comando \texttt{\textbackslash{}tand}. Consulte a secção \ref{sec:cmd_example} para exemplos de uso.
+	\item [\texttt{\textbackslash{}setdegree\{}\textit{<curso>}\texttt{\}}] Define o nome do curso.
+	\item [\texttt{\textbackslash{}setinstitution\{}\textit{<instituição>}\texttt{\}}] Define a instituição. Comando residual, não é utilizado na capa.
+	\item [\texttt{\textbackslash{}setdate\{}\textit{<data>}\texttt{\}}] Define a data.
+	\item [\texttt{\textbackslash{}setsupervisor\{}\textit{<supervisor(es)>}\texttt{\}}] Define o(s) supervisor(es). Para definir mais que um supervisor, consulte o comando para definir autores.
+	\item [\texttt{\textbackslash{}setchairperson\{}\textit{<presidente>}\texttt{\}}] Define o presidente.
+	\item [\texttt{\textbackslash{}setcommittee\{}\textit{<vogal(is)>}\texttt{\}}] Define o(s) vogal(is). Para definir mais que um vogal, consulte o comando para definir autores.
+	\item [\texttt{\textbackslash{}setcoverimage[}\textit{<largura relativa>}\texttt{]\{}\textit{<imagem>}\texttt{\}}] Define a imagem de capa. Neste caso, é necessário dar o nome da imagem que se deve encontrar no mesmo diretório que o documento. A sintaxe é igual ao comando \mintinline{tex}{\includegraphics}, excepto que só aceita um argumento, a largura da imagem em relação à largura de texto (portanto um valor de 1 devolveria uma imagem que cobre a capa de margem a margem).
+\end{description}
+
+\subsection{Exemplo de Utilização}\label{sec:cmd_example}
+
+Para exemplificar o uso dos comandos da secção anterior, está aqui incluído um exemplo de sintaxe.
+\begin{minted}{tex}
+\settitle{Tese do Schiffart}
+\setsubtitle{Sobre um tema}
+\setauthor{Daniel de Schiffart}
+\setdegree{Mestrado Integrado em Engenharia Aeroespacial}
+\setsupervisor{Prof. Supervisor}
+\setchairperson{Presidente}
+\setcommittee{Prof. A. \tand Prof. B.}
+\setcoverimage[0.5]{example-image-a}
+\end{minted}
 
 \section{Secções Especiais}\label{sec:spec}
 
 A descrição de comandos pertinentes à introdução de secções especiais na tese encontram-se nesta secção.
 
-\section{Comandos Internos}
+\section{Comandos Internos}\label{sec:internal}
 
 Estes são utilizados para criar na capa e retornam os valores definidos pelo utilizador nos comandos originais. Estes são apenas utilizados internamente pela classe, mas podem ser utilizados pelo utilizador ao longo do documento para colocar o seu valor algures no texto.
 
@@ -73,7 +113,7 @@ Primeiramente temos os comandos para criar a capa.
 \setsupervisor{}
 \setchairperson{}
 \setcommittee{}
-\setcoverimage{}
+\setcoverimage[]{}
 
 \tand
 
