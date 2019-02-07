@@ -6,6 +6,12 @@
 \usepackage{makecell}
 \usepackage{metalogo}
 \usepackage{booktabs}
+
+\usepackage{minted}
+\definecolor{bg}{rgb}{0.97,0.97,0.97}
+\setminted{bgcolor = bg, breaklines}
+\setmintedinline{bgcolor = {}}
+
 \newrobustcmd*\package[1]{\href{https://ctan.org/pkg/#1}{\textcolor{ist-cyan}{\texttt{#1}}}}
 
 \begin{document}
@@ -13,7 +19,7 @@
 \begin{center}
 	{\Huge\bfseries A classe \texttt{ist-thesis}}
 	\par\bigskip
-	{\Large Classe LaTeX de tese não oficial do Instituto Superior Técnico}
+	{\Large Classe \LaTeX{} de tese não oficial do Instituto Superior Técnico}
 	\par\bigskip\smallskip
 	Daniel Lopes de Schiffart \\
 	\url{https://github.com/ekspek/ist-thesis}
@@ -48,6 +54,59 @@ Os comandos nesta secção são pertinentes aos dados do contexto da tese, como 
 
 A descrição de comandos pertinentes à introdução de secções especiais na tese encontram-se nesta secção.
 
+\section{Comandos Internos}
+
+Estes são utilizados para criar na capa e retornam os valores definidos pelo utilizador nos comandos originais. Estes são apenas utilizados internamente pela classe, mas podem ser utilizados pelo utilizador ao longo do documento para colocar o seu valor algures no texto.
+
+\section{Lista Completa de Comandos e Ambientes}
+
+Nesta secção estão listados todos os comandos disponíveis ao utilizador ao usar a classe.
+
+Primeiramente temos os comandos para criar a capa.
+\begin{minted}[fontsize = \small]{tex}
+\settitle{}
+\setsubtitle{}
+\setauthor{}
+\setdegree{}
+\setinstitution{}
+\setdate{}
+\setsupervisor{}
+\setchairperson{}
+\setcommittee{}
+\setcoverimage{}
+
+\tand
+
+\makecover
+\end{minted}
+
+Seguidos estão os ambientes disponíveis.
+\begin{minted}[fontsize = \small]{tex}
+\begin{dedication}
+\end{dedication}
+
+\begin{acknowledgements}
+\end{acknowledgements}
+
+\begin{abstract}{}
+\end{abstract}
+\end{minted}
+
+Por fim, os comandos internos.
+\begin{minted}[fontsize = \small]{tex}
+\ttitle{}
+\tsubtitle{}
+\tauthor{}
+\tsupervisor{}
+\tdegree{}
+\tchairperson{}
+\tcommittee{}
+\tinstitution{}
+\tdate{}
+\tcoverimage{}
+\tcoverimagewidth{}
+\end{minted}
+
 \chapter{Implementação da Classe}
 
 Este capítulo é dedicado à descrição de como a classe e todas as suas funções foram implementadas dentro do contexto de \TeX{} e \LaTeX{}, com especial atenção às \textit{packages} utilizadas. Tem por isso um cariz mais técnico e não é necessária a sua leitura para qualquer utilização da classe.
@@ -55,6 +114,8 @@ Este capítulo é dedicado à descrição de como a classe e todas as suas funç
 \section{Estilo de Página}
 
 As definições da página estão reduzidas aos tamanhos de margem. Estes estão estabelecidos em $2.5$ centímetros para todos os lados, e são definidos utilizando a \textit{package} \package{geometry}.
+
+Também definido está o espacamento entre linhas. Para este efeito é utilizada a \textit{package} \package{setspace}, que evita definir o espaçamento de linhas para \textbf{todo} o texto, definindo apenas o espaçamento para o corpo do texto, evitando definir por exemplo legendas de imagens ou tabelas. Permite também criar exceções a meio do texto via o comando \mintinline{tex}{\setspace}, mas sugere-se o seu uso apenas em situações especiais tendo em atenção o regulamento da Direcção Académica.
 
 \section{Cores e Hiperligações}
 
@@ -131,7 +192,6 @@ Também incluído aqui está uma demonstração de uma equação no tipo de letr
 Fica nesta secção um resumo de todas as \textit{packages} utilizadas na implementação da classe.
 \begin{table}[ht]
 	\centering
-	\renewcommand\arraystretch{0.7}
 	\begin{tabular}{c|c}\toprule
 		pdf\LaTeX{}				& \makecell{\XeLaTeX{} or \\ \LuaLaTeX{}}	\\
 		\midrule
@@ -153,6 +213,7 @@ Fica nesta secção um resumo de todas as \textit{packages} utilizadas na implem
 		\multicolumn{2}{c}{\package{newtxsf}}				\\
 		\multicolumn{2}{c}{\package{microtype}}				\\
 		\multicolumn{2}{c}{\package{tocbibind}}				\\
+		\multicolumn{2}{c}{\package{setspace}}				\\
 		\bottomrule
 	\end{tabular}
 	\caption{\textit{Packages} carregadas pela classe sem argumentos opcionais, dependendo do compilador utilizado.}

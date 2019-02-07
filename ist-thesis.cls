@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/02/06 v0.2.4 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/02/07 v0.2.5 Unofficial IST thesis class]
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
@@ -99,9 +99,10 @@
 
 \RequirePackage{microtype}
 \RequirePackage{tocbibind}
+\RequirePackage{setspace}
 
 \geometry{a4paper,margin = 2.5cm}
-\renewcommand\baselinestretch{1.5}
+\setstretch{1.5}
 
 \ifbool{@bw}{
 	\definecolor{ist-cyan}{cmyk}{1,1,1,1}
