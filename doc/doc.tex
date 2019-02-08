@@ -66,6 +66,25 @@ Muito boa sorte com a vossa tese!
 
 %Este capítulo está dedicado a cobrir os básicos para colocar a classe a funcionar em qualquer instalação de \LaTeX{}.
 
+\chapter{Argumentos Opcionais}
+
+Ao carregar a classe, no comando \mintinline{tex}{\documentclass}, é possível passar argumentos opcionais para definir opções globais da classe. Os argumentos opcionais estão listados aqui.
+\begin{description}
+	\item [portuguese] Define a língua portuguesa para o documento, principalmente no idioma de macros e expressões como índice e resumo. Esta opção está seleccionada por defeito e não precisa de ser passada.
+	\item [english] Define a língua inglesa para o documento, análogo à opção \texttt{portuguese}.
+	\item [\texttt{bw}] Ativa a opção preto e branco. Troca todas as instâncias de ciano no documento, como nas ligações e URLs, por preto.
+	\item [\texttt{origmath}] Retorna o tipo de letra matemático ao carregado originalmente pelo \LaTeX{}. Segue da discussão da secção \ref{sec:mathfont} e evita o carregamento da \textit{package} \package{newtxsf}.
+\end{description}
+
+Para ativar um ou mais argumentos, insira no início do ficheiro entre parênteses retos os argumentos a utilizar.
+\begin{minted}[linenos = false]{tex}
+\documentclass[english]{ist-thesis}
+\end{minted}
+Para carregar mais que um argumento, basta separá-los por vírgulas.
+\begin{minted}[linenos = false]{tex}
+\documentclass[english,origmath]{ist-thesis}
+\end{minted}
+
 \chapter{Comandos e Ambientes}
 
 Este capítulo contém a documentação oficial dos comandos e ambientes implementados na classe utilizáveis pelo utilizador e as suas funções e dependências dentro do documento que as utiliza. Também incluídas estão algumas modificações feitas a documentos base de \LaTeX{} para funcionarem corretamente com as funções implementadas.
@@ -238,6 +257,7 @@ Estas cores estão definidas na classe como \texttt{ist-cyan} e \texttt{ist-gray
 O tópico de tipos de letra tem vários pormenores a descrever, mas a escolha de cada um deles prende-se à decisão da Direcção Académica em escolher \textit{Arial} como o tipo de letra principal do documento. A discussão de cada tipo de letra implementado inclui a justificação relevante, mas é importante referir que para os tipos de letra não principais que serão descritos podem ser substituídos de acordo com a preferência do utilizador da forma que entender. Em geral, as implementações de tipos de letra num documento feito sem e com a classe \texttt{ist-thesis} são idênticas e devem funcionar como suposto.
 
 \subsection{Tipo de Letra Principal}
+\label{sec:mainfont}
 
 Em contraste com o tipo de letra de raíz de qualquer documento \LaTeX{}\footnotemark{}, \textit{Computer Modern}, o tipo de letra especificado pelo guia de preparação da dissertação, \textit{Arial} é muito distinto, mas igualmente (ou mais reconhecível). No entanto, um dos problemas é que este tipo de letra é muito mais omnipresente em sistemas com \textit{Windows} do que no restantes, como também na internet. É, por isso, um tipo de letra que não encontrou implementação nativa em \LaTeX{}.
 \footnotetext{Neste caso referimo-nos a documentos utilizando as classes base de \LaTeX{}, como \texttt{article}, \texttt{report}, ou \texttt{book}, entre outras.}
@@ -253,7 +273,7 @@ O tipo de letra monoespaçado escolhido para o projeto foi \texttt{Inconsolata},
 \subsection{Tipografia Matemática}
 \label{sec:mathfont}
 
-Como anteriormente referido neste capítulo, o tipo de letra utilizado para matemática não está incluído no tipo de letra principal utilizado e teve de ser seleccionado à parte.
+Como anteriormente referido na secção \ref{sec:mainfont}, o tipo de letra utilizado para matemática não está incluído no tipo de letra principal utilizado e teve de ser seleccionado à parte.
 
 Para utilizadores com experiência em \LaTeX{}, o tipo de letra de raíz utilizado pelo \LaTeX{}, \textit{Computer Modern}, já inclui todas as funções necessárias para as mais variadas necessidades de escrita de textos matemáticos. E embora isto seja verdade, a colisão entre \textit{Arial} (ou \TeX{} Gyre Heros, neste caso) e \textit{Computer Modern} não é a mais agradável, o que levou à procura de uma alternativa mais satisfatória. Não obstante, para quem não se quiser preocupar com pormenores ou estiver satisfeito com o tipo de letra de matemática original, é incluída a opção \texttt{origmath} na classe para manter este tipo de letra.
 
