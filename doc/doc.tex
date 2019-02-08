@@ -21,7 +21,9 @@
 	\par\bigskip
 	{\Large Classe \LaTeX{} de tese não oficial do Instituto Superior Técnico}
 	\par\bigskip\smallskip
-	Daniel Lopes de Schiffart \\
+	Daniel de Schiffart \\
+	{\small com apoio de} \\
+	{\setstretch{1}João Gonçalves \\}
 	\url{https://github.com/ekspek/ist-thesis}
 \end{center}
 
@@ -44,7 +46,7 @@ Eu aprendi a utilizar \LaTeX{} à dois anos, no início quarto ano, e como toda 
 
 Este projeto começou no final do ano passado como uma brincadeira. Estava a começar a apanhar o ritmo do \LaTeX{} e começava a reparar o quanto reutilizava certas \textit{packages}, certas definições, enfim, sempre o mesmo código em cada relatório que fazia. Considerando que as classes de \LaTeX{} definiam já um molhe de coisas quando são carregadas, comecei a ter isso em conta, olhando para as classes de \LaTeX{} online, nem pensava que fosse capaz de escrever uma de raíz. Mas o aspeto mente; é pura e simplesmente código \LaTeX{}, e embora fossem precisos uns trambolhões, lá apareceu o código a pouco e pouco.
 
-Muito deste trabalho transpõe o que aprendi a escrever a classe \href{https://github.com/ekspek/ist-relatorio}{\texttt{ist-relatorio}}. Embora menos versátil, esta classe ainda colocou vários desafios na interface entre o utilizador e o \textit{output}, mas acho que em geral o produto final está com bom aspeto, e ainda preservando alguma versatilidade. Aliás, para provar essa versatilidade, decidi implementar esta mesma documentação utilizando a classe, só mesmo por curiosidade, para ver se resultava. Eu sei que o abuso do \textit{Arial} em todas as páginas queima os olhos a ver, mas o Técnico é que manda \verb|¯\_('_')_/¯|
+Muito deste trabalho transpõe o que aprendi a escrever a classe \href{https://github.com/ekspek/ist-relatorio}{\texttt{ist-relatorio}}, um projeto mais experimental e \textit{kaleidoscpópico} que mesmo assim ainda se prova útil queando preciso dele. Embora menos versátil, esta classe aqui ainda colocou vários desafios na interface entre o utilizador e o \textit{output}, mas acho que em geral o produto final está com bom aspeto, e ainda preservando alguma versatilidade. Aliás, para provar essa versatilidade, decidi implementar esta mesma documentação utilizando a classe, só mesmo por curiosidade, para ver se resultava. Eu sei que o abuso do \textit{Arial} em todas as páginas queima os olhos a ver, mas o Técnico é que manda \verb|¯\_('_')_/¯|
 
 A inspiração principal de passar para a tese foi o meu prazo para tal a reduzir mais e mais, mas também observar os inúmeros modelos de tese que estão espalhados pela net, para as mais variadas universidades à volta do mundo. Não fazia sentido ver o Técnico ficar para trás, especialmente considerando a \textit{imensa imensa} progressividade tecnológica deste nosso cantinho da Universidade de Lisboa. Menções especiais para o modelo de tese da TUDelft, criado à imagem do \textit{Huisstijl} deles, que li e reli para aprender a criar classes.
 
@@ -62,9 +64,24 @@ Muito boa sorte com a vossa tese!
 
 \clearpage
 
-%\chapter{\textit{Quick Start} -- Os Básicos}
+\chapter{\textit{Quick Start} -- Os Básicos}
 
-%Este capítulo está dedicado a cobrir os básicos para colocar a classe a funcionar em qualquer instalação de \LaTeX{}.
+Para carregar a classe e criar um documento com o aspeto de tese, é necessário fazer o download do ficheiro da classe, \texttt{ist-thesis.cls}. Após isso, num ficheiro \texttt{.tex} separado, a primeira linha do documento terá de ser
+\begin{minted}[linenos = false]{tex}
+\documentclass{ist-thesis}
+\end{minted}
+Isto carrega a classe. Introduza qualquer texto e compile para testar. Um exemplo de um documento \texttt{.tex} o mais pequeno possível válido que compila sem problemas encontra-se abaixo.
+\begin{minted}{tex}
+\documentclass{ist-thesis}
+
+\begin{document}
+
+Hello World!
+
+\end{document}
+\end{minted}
+
+Mais propriedades que a classe tem encontram-se nos capítulos que se seguem.
 
 \chapter{Argumentos Opcionais}
 
