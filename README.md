@@ -48,6 +48,12 @@ O projeto neste momento encontra-se em desenvolvimento, não estando num estado 
 
 O progresso pode também ser observado na página de [*Issues*](https://github.com/ekspek/ist-thesis/issues) do GitHub.
 
+#### Considerações sobre este projeto
+
+Este projeto não é o primeiro nem será o útlimo modelo de tese em LaTeX feito pela comunidade do IST. Em comparação a outros modelos, no entanto, este tem o objetivo de ser simples de utilizar, não distribuíndo um modelo pronto para ser subtituído com texto do autor mas sim fornecendo uma base para tal, definindo as regras e restrições da Direcção Académica e permitindo ao utilizador definir o resto como preferir, tentando não interferir com a experiência típica de LaTeX e da classe `report`. É, portanto, um projeto mais indicado a utilizadores com alguma experiência em LaTeX e que se sintam confortáveis a criar um documento de raíz (ou copiando trabalhos anteriores).
+
+No entanto, para quem precisar, incluí um exemplo de tese para auxiliar com os aspetos que a classe de tese aqui distribuída não cobre. Também estou disponível para contactar com quem precisar de ajuda com LaTeX, dentro dos meus conhecimentos. Os contactos estão incluídos acima.
+
 ## Referências
 
 Os regulamentos de elaboração da tese foram retirados do [Guia de Preparação da Dissertação](https://academica.tecnico.ulisboa.pt/files/sites/54/guia-de-preparacao-da-dissertacao-1516.pdf "Guia de Preparação da Dissertação") da Direção Académica do Instituto Superior Técnico.
