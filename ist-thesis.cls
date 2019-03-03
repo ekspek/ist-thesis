@@ -20,7 +20,37 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/02/07 v0.2.5 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/02/20 v0.2.6 Unofficial IST thesis class]
+
+\typeout{_____________________________________________________________________________}
+\typeout{_____________________________________________________________________________}
+\typeout{__________________`:::::::::::::::::::::::::::::::::::::::`__________________}
+\typeout{__________________.ooooooooooooooooooooooooooooooooooooooo`__________________}
+\typeout{__________________.oooooooooooooooooooo/://:/+oooooooooooo`__________________}
+\typeout{__________________.oooooooooooooooooo-`_:oo-_`-ooooooooooo`__________________}
+\typeout{__________________.ooooooooooooooooo/___+oo+___+oooooooooo`__________________}
+\typeout{__________________.ooooooooooooooooo/___+ooo+/+ooooooooooo`__________________}
+\typeout{__________________.oooooooooo+///ooo/___+o///////ooooooooo`__________________}
+\typeout{__________________.oooooooooo:___+oo/___+o.`___`.ooooooooo`__________________}
+\typeout{__________________.oooooooooo:___+oo/___+o+/___/+ooooooooo`__________________}
+\typeout{__________________.oooooooooo:___+oo/___+oo/___/oooooooooo`__________________}
+\typeout{__________________.oooooooooo:___+oo/___+oo/___/oooooooooo`__________________}
+\typeout{__________________`oooooooooo:___+oo/___+oo/___/oooooooooo___________________}
+\typeout{___________________+ooooooooo:___+oo/___+oo/___/ooooooooo+___________________}
+\typeout{___________________-ooooooooo:___+oo/___+oo/___/ooooooooo-___________________}
+\typeout{____________________+oooooooo+///ooo/___+ooo///ooooooooo/____________________}
+\typeout{____________________.ooooooooo//+ooo/___+oooooooooooooo+`____________________}
+\typeout{_____________________.+oooooo/__`ooo/___+ooooooooooooo+`_____________________}
+\typeout{______________________`+ooooo+.`_/o+-_`:ooooooooooooo/`______________________}
+\typeout{_______________________`:oooooo+/:////oooooooooooooo:________________________}
+\typeout{_________________________.+ooooooooooooooooooooooo/`_________________________}
+\typeout{___________________________-+ooooooooooooooooooo/.___________________________}
+\typeout{_____________________________./ooooooooooooooo/._____________________________}
+\typeout{_______________________________`:+ooooooooo+-`_______________________________}
+\typeout{__________________________________.:+ooo+:.__________________________________}
+\typeout{_____________________________________.-`_____________________________________}
+\typeout{_____________________________________________________________________________}
+\typeout{_____________________________________________________________________________}
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
