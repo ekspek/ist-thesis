@@ -28,6 +28,8 @@ No entanto, é necessária caução quando o documento for compilado com bibliog
 
 Os logótipos oficiais do Instituto Superior Técnico não estão incluídos neste repositório, mas podem ser encontrados na [página oficial](https://tecnico.ulisboa.pt/pt/sobre-o-tecnico/institucional/logo-e-manual-de-identidade/). A utilização destes logótipos é obrigatória e o repositório tem _placeholders_, ficheiros com nome, tamanho e estrutura iguais aos logótipos oficiais, colocados no sítio certo para serem substituídos pelos ficheiros corretos.
 
+![Imagem da capa da tese de exemplo](./cover.png)
+
 ## Documentação
 
 A documentação que é disponibilizada inclui detalhes sobre o conteúdo da classe e como melhor fazer uso das funções incluídas. Pode ser consultada neste [link](doc/doc.pdf) ou na pasta [doc](doc/) deste repositório, onde se encontra acompanhada do código fonte.
