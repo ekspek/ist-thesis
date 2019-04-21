@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/02/20 v0.2.6 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/04/21 v0.2.7 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -93,12 +93,14 @@
 
 \ifbool{unicode}{
 	\RequirePackage[no-math]{fontspec}
-	\setsansfont[
-		UprightFont = *-regular,
-		Extension = .otf,
-		BoldFont = *-bold,
-		ItalicFont = *-italic,
-		BoldItalicFont = *-bolditalic]{texgyreheros}
+	\IfFontExistsTF{texgyreheros-regular.otf}{
+		\setsansfont[
+			UprightFont = *-regular,
+			Extension = .otf,
+			BoldFont = *-bold,
+			ItalicFont = *-italic,
+			BoldItalicFont = *-bolditalic]{texgyreheros}
+	}{}
 	\renewcommand{\familydefault}{\sfdefault}
 	\setmonofont[Scale = 1.14]{inconsolata}
 
