@@ -132,9 +132,14 @@
 \RequirePackage{microtype}
 \RequirePackage{tocbibind}
 \RequirePackage{setspace}
+\RequirePackage{caption}
 
 \geometry{a4paper,margin = 2.5cm}
 \setstretch{1.5}
+
+\captionsetup{labelfont = bf, margin = 15pt}
+\captionsetup[figure]{textfont = it}
+\captionsetup[table]{position = top, skip = 3pt}
 
 \ifbool{@bw}{
 	\definecolor{ist-cyan}{cmyk}{1,1,1,1}
