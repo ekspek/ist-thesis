@@ -138,7 +138,6 @@
 \setstretch{1.5}
 
 \captionsetup{labelfont = bf, margin = 15pt}
-\captionsetup[figure]{textfont = it}
 \captionsetup[table]{position = top, skip = 3pt}
 
 \ifbool{@bw}{
