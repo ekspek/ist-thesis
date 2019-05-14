@@ -1,59 +1,104 @@
-% arara: xelatex: { synctex: yes, shell: yes }
+% arara: pdflatex: { synctex: yes, shell: yes }
+
+% A primeira linha do ficheiro indica ao programa 'arara' como compilar
+% o documento. Existem várias maneiras diferentes de compilar, mas esta
+% primeira linha pode em geral ser ignorada.
+
+% Este comando, o primeiro do documento, importa a classe a usar. Cada
+% documento só pode ter uma classe.
 \documentclass[portuguese]{ist-thesis}
 
+% Entre 'documentclass' e 'begin{document}' encontra-se o 'preamble', ou
+% a secção de código para importar packages e estabelecer configurações
+% para o documento todo. A classe importa algumas packages básicas por
+% defeito, mas aqui estão outras packages também úteis para uma tese.
+% Qualquer package pode ser importada, que em geral não gera conflito.
+% Recomendo consultar a documentação de cada package no site 'ctan.org'.
+
+% Configurações para citações internacionais
 \usepackage{csquotes}
+
+% Gestão de bibliografia e citações
 \usepackage{biblatex}
 \addbibresource{main.bib}
 
+% Introdução de texto de exemplo
 \usepackage{lipsum}
+
+% Estilo diferente de tabelas
 \usepackage{booktabs}
+
+% Packages para esboçar gráficos e diagramas
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usetikzlibrary{positioning,arrows.meta}
 
+% Alterar as pastas de onde importar imagens (/graphics/) e dados de
+% vários tipos (/data/)
 \graphicspath{{graphics/}}
 \pgfplotsset{table/search path = {data}}
 
+% Comando próprio da classe
+% Define a imagem de capa pelo nome, com o tamanho entre parênteses
+% retos (fracção da largura da página, neste caso metade)
 \setcoverimage[0.5]{example-image-a}
 
+% Fim do 'preamble' e início do documento escrito
 \begin{document}
 
+% Comando próprio da classe
+% Cria a capa com base nos dados fornecidos no 'preamble' com comandos
+% próprios
 \makecover
 
+% Ambiente próprio da classe
+% Formata o texto no seu interior como dedicatória
 \begin{dedication}
-	I don't like sand.
+	\lipsum[1] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 \end{dedication}
 
+% Ambiente próprio da classe
+% Formata o texto no seu interior como agradecimentos
 \begin{acknowledgements}
-	Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. He became so powerful... the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself.
+	\lipsum[2] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 \end{acknowledgements}
 
+% Ambiente próprio da classe
+% Formata o texto no seu interior como resumo, aceitando palavras-chave
+% como um argumento extra
 \begin{tabstract}{Resumo, Palavras-Chave, Resumo Analítico, \textit{Abstract}}
 	Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
 	The abstract describes the objective, the content of the project and the conclusions. It must be written in both portuguese and english, with a maximum of 250 words, accompanied by 4 to 6 keywords.
 \end{tabstract}
 
+% Índice
 \tableofcontents
 
+% Lista de figuras
 \listoffigures
 
+% Lista de tabelas
 \listoftables
 
+% Comando próprio da classe
+% Finaliza a parte inicial do documento, e começa o texto escrito
+% propriamente dito. Utilizado pela classe para definir coisas como
+% o tipo de numeração
 \mainstart
 
 \chapter{Introdução}
 
-\lipsum[1]
+\lipsum[1] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
 \section{Primeira Secção}
 
-Esta referência liga à equação \ref{eq:equation1}.
+Esta referência liga à equação \eqref{eq:equation1}.
 
 \begin{gather}\label{eq:equation1}
 	\mathbb{P}\left(\frac{X_1 + \cdots + X_n}{\sqrt{n}} \leq y\right) \rightarrow \mathrm{R}(y) = \int_{-\infty}^{y} \frac{e^{-t^2/2}}{\sqrt{2\pi}}dt \qquad \mathrm{as} \quad n \rightarrow \infty
 \end{gather}
 
-\lipsum[2-3]
+\lipsum[2-3] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
 \begin{figure}[ht]
 	\centering
@@ -62,7 +107,7 @@ Esta referência liga à equação \ref{eq:equation1}.
 	\label{fig:image1}
 \end{figure}
 
-\lipsum[1]
+\lipsum[1] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
 \begin{table}[ht]
 	\centering
@@ -78,7 +123,7 @@ Esta referência liga à equação \ref{eq:equation1}.
 	\label{tab:tab1}
 \end{table}
 
-\lipsum[11]
+\lipsum[11] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
 \begin{figure}[ht]
 	\centering
@@ -100,7 +145,7 @@ Esta referência liga à equação \ref{eq:equation1}.
 	\label{fig:diag1}
 \end{figure}
 
-\lipsum[13-14]
+\lipsum[13-14] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
 \begin{figure}
 	\centering
@@ -124,7 +169,7 @@ Esta referência liga à equação \ref{eq:equation1}.
 	\label{fig:graph1}
 \end{figure}
 
-\lipsum[15]
+\lipsum[15] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
 \begin{figure}
 	\centering
@@ -145,9 +190,14 @@ Esta referência liga à equação \ref{eq:equation1}.
 	\label{fig:graph1}
 \end{figure}
 
-\lipsum
+\lipsum % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
+% Citações vazias. Permite à bibliografia incluir as referências sem
+% citações no texto.
 \nocite{latex-companion, fontcatalogue, latexwiki, ctan, texsx}
+
+% Introduz a bibliografia. A opção 'heading = bibintoc' introduz a
+% bibliografia no índice.
 \printbibliography[heading = bibintoc]
 
 \end{document}
