@@ -28,6 +28,11 @@
 % Estilo diferente de tabelas
 \usepackage{booktabs}
 
+% Glossários
+\usepackage[abbreviations,symbols]{glossaries-extra}
+\setabbreviationstyle{long-short}
+\loadglsentries{glossary}
+
 % Packages para esboçar gráficos e diagramas
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -79,6 +84,11 @@
 
 % Lista de tabelas
 \listoftables
+
+% Glossários
+\printunsrtglossary[style = long, nogroupskip]
+\printunsrtglossary[type = abbreviations, style = long, nogroupskip, title = {Lista de Acrónimos}]
+\printunsrtglossary[type = symbols, nogroupskip, title = {Lista de Símbolos}]
 
 % Comando próprio da classe
 % Finaliza a parte inicial do documento, e começa o texto escrito
