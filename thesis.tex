@@ -100,6 +100,8 @@
 
 \lipsum[1] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
+\part{Introdução Teórica}
+
 \section{Primeira Secção}
 
 Esta referência liga à equação \eqref{eq:equation1}.
@@ -123,7 +125,7 @@ Esta referência liga à equação \eqref{eq:equation1}.
 	\centering
 	\caption{Algumas expressões e variáveis. Nas tabelas, a legenda vem em cima.}
 	\begin{tabular}{c c c}\toprule
-		\textbf{Expression}	& \textbf{Value of $\mathbf{x}$}	& \textbf{Value of $\mathbf{y}$}\\
+		\textbf{Função}		& \textbf{Valor de $\mathbf{x}$}	& \textbf{Valor de $\mathbf{y}$}\\
 		\midrule
 		$y = 4x$			& $67$								& $268$							\\
 		$y = x^2$			& $13$								& $169$							\\
@@ -155,9 +157,9 @@ Esta referência liga à equação \eqref{eq:equation1}.
 	\label{fig:diag1}
 \end{figure}
 
-\lipsum[13-14] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
+\lipsum[13] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\begin{tikzpicture}
 		\begin{axis}
@@ -179,6 +181,8 @@ Esta referência liga à equação \eqref{eq:equation1}.
 	\label{fig:graph1}
 \end{figure}
 
+\part{Implementação e Resultados}
+
 \lipsum[15] % Introduz um parágrafo de 'lorem ipsum', ou texto exemplo
 
 \begin{figure}
@@ -196,7 +200,7 @@ Esta referência liga à equação \eqref{eq:equation1}.
 			\legend{Exemplo};
 		\end{axis}
 	\end{tikzpicture}
-	\caption[Exemplo de um \textit{plot} de dados em \LaTeX{}.]{Exemplo de um \textit{plot} de dados em \LaTeX{}. Os dados foram obtidos de um ficheiro \texttt{.csv} auxiliar.}
+	\caption[Exemplo de um gráfico de dados em \LaTeX{}.]{Exemplo de um gráfico de dados em \LaTeX{}. Os dados foram obtidos de um ficheiro \texttt{.csv} externo.}
 	\label{fig:graph1}
 \end{figure}
 
@@ -206,8 +210,22 @@ Esta referência liga à equação \eqref{eq:equation1}.
 % citações no texto.
 \nocite{latex-companion, fontcatalogue, latexwiki, ctan, texsx}
 
+\part{Bibliografia e Apêndices}
+
 % Introduz a bibliografia. A opção 'heading = bibintoc' introduz a
 % bibliografia no índice.
 \printbibliography[heading = bibintoc]
+
+% Começar o apêndice. A estrutura dos capítulos é a mesma que no documento
+% principal.
+\appendix
+
+\chapter{Primeiro Anexo}
+
+\lipsum
+
+\chapter{Segundo Anexo}
+
+\lipsum
 
 \end{document}
