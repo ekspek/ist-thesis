@@ -133,6 +133,7 @@
 \RequirePackage{tocbibind}
 \RequirePackage{setspace}
 \RequirePackage{caption}
+\RequirePackage{totpages}
 
 \geometry{a4paper,margin = 2.5cm}
 \setstretch{1.5}
@@ -161,6 +162,16 @@
 	\appto\listoffigures{\endgroup}
 	\preto\listoftables{\begingroup\hypersetup{linkcolor = black}}
 	\appto\listoftables{\endgroup}
+}
+
+\def\maxPages{100}
+\AfterEndDocument{
+	\ifnumcomp{\theTotPages}{>}{\maxPages}{
+		\ClassWarningNoLine{ist-thesis}{%
+			Number of pages exceeds IST regulated maximum for\MessageBreak
+			a dissertation (\theTotPages\space pages out of a maximum of \maxPages).\MessageBreak
+			Remove content and compile again}
+	}{}
 }
 
 % - Class Commands - %
