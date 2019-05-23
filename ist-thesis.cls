@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/05/16 v1.0.0 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/05/23 v1.0.1 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
