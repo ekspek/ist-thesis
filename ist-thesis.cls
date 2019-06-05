@@ -278,7 +278,7 @@
 
 \newenvironment{tabstract}[1]{
 	\newpage
-	\newcommand*\ackkey[1]{#1}
+	\newcommand*\abskey[1]{#1}
 	\vspace*{60mm}
 	\begin{center}
 		\ifbool{@english}
@@ -288,8 +288,8 @@
 }{
 	\par\vspace{\fill}
 	\ifbool{@english}
-		{ {\large \textbf{Keywords:} \ackkey{}} }
-		{ {\large \textbf{Palavras-Chave:} \ackkey{}} }
+		{ {\large \textbf{Keywords:} \abskey{}} }
+		{ {\large \textbf{Palavras-Chave:} \abskey{}} }
 	\cleardoublepage
 }
 
