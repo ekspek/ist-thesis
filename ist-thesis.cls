@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/06/06 v1.0.3 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/06/06 v1.0.4 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -231,7 +231,11 @@
 		\par\vspace{10mm}
 		{\Large \tsubtitle}
 		\par\vspace{10mm}
-		{\Large\bfseries \tauthor}
+		{\Large\bfseries
+			\begin{tabular}{c c}
+				&\tauthor
+			\end{tabular}
+		}
 		\par\vspace{10mm}
 		\ifbool{@english}
 			{\large Thesis to obtain the Master of Science Degree in}
