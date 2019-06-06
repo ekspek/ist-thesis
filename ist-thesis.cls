@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/05/23 v1.0.1 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/06/06 v1.0.2 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -292,5 +292,15 @@
 		{ {\large \textbf{Palavras-Chave:} \abskey{}} }
 	\cleardoublepage
 }
+
+\hypersetup{
+	unicode = true,
+}
+\ifbool{unicode}
+	{ \hypersetup{pdfcreator = {Xe/LuaLaTeX with the ist-thesis class}} }
+	{ \hypersetup{pdfcreator = {pdfLaTeX with the ist-thesis class}} }
+\ifbool{@english}
+	{ \hypersetup{pdflang = {English}} }
+	{ \hypersetup{pdflang = {Português}} }
 
 \newrobustcmd\mainstart{\cleardoublepage\pagenumbering{arabic}}
