@@ -6,7 +6,7 @@ Modelo de tese de mestrado em LaTeX não oficial para documentos escritos para o
 
 ## Utilização
 
-Para compilar um documento em LaTeX com esta classe, só é necessário fazer download do ficheiro [`ist-thesis.cls`](https://github.com/ekspek/ist-thesis/releases/download/v1.0/ist-thesis.cls).
+Para compilar um documento em LaTeX com esta classe, só é necessário fazer download do ficheiro [`ist-thesis.cls`](https://github.com/ekspek/ist-thesis/releases/download/v1.0.0/ist-thesis.cls).
 1. Colocar o ficheiro `ist-thesis.cls` na mesma pasta que o documento `.tex` a compilar;
 2. Incluir a linha abaixo no início do ficheiro;
 ````tex
