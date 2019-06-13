@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/06/06 v1.0.4 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/06/13 v1.0.5 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -102,7 +102,7 @@
 			BoldItalicFont = *-bolditalic]{texgyreheros}
 	}{}
 	\renewcommand{\familydefault}{\sfdefault}
-	\setmonofont[Scale = 1.14]{inconsolata}
+	\setmonofont[Scale = 1.14]{InconsolataN}
 
 	% - Language Settings - %
 	\RequirePackage{polyglossia}
@@ -118,7 +118,7 @@
 	\RequirePackage[T1]{fontenc}
 	\RequirePackage{tgheros}
 	\renewcommand{\familydefault}{\sfdefault}
-	\RequirePackage[scaled = 1.14]{inconsolata}
+	\RequirePackage[scaled = 1.14, narrow]{inconsolata}
 
 	% - Language Settings - %
 	\ifbool{@portuguese}
