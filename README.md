@@ -26,7 +26,7 @@ No entanto, é necessária caução quando o documento for compilado com bibliog
 
 ### Logótipos
 
-Os logótipos oficiais do Instituto Superior Técnico não estão incluídos neste repositório, mas podem ser encontrados na [página oficial](https://tecnico.ulisboa.pt/pt/sobre-o-tecnico/institucional/logo-e-manual-de-identidade/). A utilização destes logótipos é obrigatória e o repositório tem _placeholders_, ficheiros com nome, tamanho e estrutura iguais aos logótipos oficiais, colocados no sítio certo para serem substituídos pelos ficheiros corretos.
+Os logótipos oficiais do Instituto Superior Técnico estão incluídos neste repositório, mas também podem ser encontrados na [página oficial](https://tecnico.ulisboa.pt/pt/sobre-o-tecnico/institucional/logo-e-manual-de-identidade/). A utilização destes logótipos é obrigatória e a ausência dos ficheiros correspondentes retorna erro.
 
 ![Imagem da capa da tese de exemplo](./cover.png)
 
@@ -65,3 +65,6 @@ Inspiração e referência também foram retiradas do excelente [conjunto de doc
 ## Licença
 
 Este projeto está licenciado através da [LaTeX Project Public License](https://www.latex-project.org/lppl/), versão 1.3c.
+
+Quaisquer dados pertinentes ao Instituto Superior Técnico em si (em especial os logótipos) são propriedade do Instituto Superior Técnico e da Universidade de Lisboa.
+
