@@ -331,6 +331,25 @@
 	\cleardoublepage
 }
 
+% Temporary (maybe?) foreign language abstract environment
+% Identical to tabstract except for the language definitions
+\newenvironment{fabstract}[1]{
+	\newpage
+	\newcommand*\abskey[1]{#1}
+	\vspace*{60mm}
+	\begin{center}
+		\ifbool{@english}
+			{ \section*{Resumo} }
+			{ \section*{Abstract} }
+		\end{center}
+}{
+	\par\vspace{\fill}
+	\ifbool{@english}
+		{ {\large \textbf{Palavras-Chave:} \abskey{}} }
+		{ {\large \textbf{Keywords:} \abskey{}} }
+	\cleardoublepage
+}
+
 % Define the mainstart command to start the main part of the text
 % Assists in switching from roman to arabic page numbering
 \newrobustcmd\mainstart{\cleardoublepage\pagenumbering{arabic}}
