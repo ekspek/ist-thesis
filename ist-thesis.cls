@@ -326,27 +326,59 @@
 }{
 	\par\vspace{\fill}
 	\ifbool{@english}
-		{ {\large \textbf{Keywords:} \abskey{}} }
-		{ {\large \textbf{Palavras-Chave:} \abskey{}} }
+		{ {\noindent\large\textbf{Keywords:} \abskey{}} }
+		{ {\noindent\large\textbf{Palavras-Chave:} \abskey{}} }
 	\cleardoublepage
 }
 
 % Temporary (maybe?) foreign language abstract environment
 % Identical to tabstract except for the language definitions
-\newenvironment{fabstract}[1]{
+\newenvironment{fabstract}[2]{
 	\newpage
 	\newcommand*\abskey[1]{#1}
+	\newcommand*\abslang[1]{#2}
 	\vspace*{60mm}
-	\begin{center}
-		\ifbool{@english}
-			{ \section*{Resumo} }
-			{ \section*{Abstract} }
-		\end{center}
+	\ifbool{@english}{
+		\ifdefstring{\abslang}{portuguese}{
+			\ifbool{unicode}
+				{ \begin{portuges} }
+				{ \begin{otherlanguage}{portuguese} }
+			{\centering\section*{Resumo}}
+		}{
+			{\centering\section*{Abstract}}
+		}
+	}{
+		\ifdefstring{\abslang}{english}{
+			\ifbool{unicode}
+				{ \begin{english} }
+				{ \begin{otherlanguage}{english} }
+			{\centering\section*{Abstract}}
+		}{
+			{\centering\section*{Resumo}}
+		}
+	}
+	\noindent
 }{
 	\par\vspace{\fill}
-	\ifbool{@english}
-		{ {\large \textbf{Palavras-Chave:} \abskey{}} }
-		{ {\large \textbf{Keywords:} \abskey{}} }
+	\ifbool{@english}{
+		\ifdefstring{\abslang}{portuguese}{
+			{\noindent\large\textbf{Palavras-Chave:} \abskey{}}
+			\ifbool{unicode}
+				{ \end{portuges} }
+				{ \end{otherlanguage} }
+		}{
+			{\noindent\large\textbf{Keywords:} \abskey{}}
+		}
+	}{
+		\ifdefstring{\abslang}{english}{
+			{\noindent\large\textbf{Keywords:} \abskey{}}
+			\ifbool{unicode}
+				{ \end{english} }
+				{ \end{otherlanguage} }
+		}{
+			{\noindent\large\textbf{Palavras-Chave:} \abskey{}}
+		}
+	}
 	\cleardoublepage
 }
 
