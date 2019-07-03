@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/05/23 v1.0.1 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/06/13 v1.0.5 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -52,28 +52,33 @@
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
 
+% Packages loaded for class commands and engine checks
 \RequirePackage{etoolbox}
 \RequirePackage{ifluatex}
 \RequirePackage{ifxetex}
 \RequirePackage{ifpdf}
 
+% Booleans for class options
 \newbool{@portuguese}
 \newbool{@english}
 \newbool{@origmath}
 \newbool{@bw}
 
+% Bind the class option interface to the respective booleans
 \DeclareOption{portuguese}	{\booltrue{@portuguese}}
 \DeclareOption{english}		{\booltrue{@english}}
 \DeclareOption{origmath}	{\booltrue{@origmath}}
 \DeclareOption{bw}			{\booltrue{@bw}}
 
+% Use the basic LaTeX report class with the twoside option as base
+% Portuguese is on by default
 \PassOptionsToClass{twoside}{report}
 \ExecuteOptions{portuguese}
 \ProcessOptions\relax
 
 \LoadClass{report}
 
-% - Unicode boolean for either XeTeX or LuaTeX - %
+% Unicode boolean for either XeTeX or LuaTeX
 \newbool{unicode}
 \ifbool{xetex}{
 	\booltrue{unicode}
@@ -83,6 +88,7 @@
 		{ \boolfalse{unicode} }
 }
 
+% Language sanity check (english option takes priority if chosen)
 \ifbool{@english}{\boolfalse{@portuguese}}
 
 \RequirePackage{mathtools}
@@ -91,7 +97,10 @@
 \RequirePackage[hidelinks]{hyperref}
 \RequirePackage{geometry}
 
+% Font and language settings
+% These settings are very engine dependent and need careful treatment
 \ifbool{unicode}{
+	% Font settings
 	\RequirePackage[no-math]{fontspec}
 	\IfFontExistsTF{texgyreheros-regular.otf}{
 		\setsansfont[
@@ -102,9 +111,9 @@
 			BoldItalicFont = *-bolditalic]{texgyreheros}
 	}{}
 	\renewcommand{\familydefault}{\sfdefault}
-	\setmonofont[Scale = 1.14]{inconsolata}
+	\setmonofont[Scale = 1.14]{InconsolataN}
 
-	% - Language Settings - %
+	% Language settings
 	\RequirePackage{polyglossia}
 	\ifbool{@portuguese}{
 		\setmainlanguage{portuges}
@@ -114,19 +123,22 @@
 		\setotherlanguage{portuges}
 	}
 }{
+	% Font settings
 	\RequirePackage[utf8]{inputenc}
 	\RequirePackage[T1]{fontenc}
 	\RequirePackage{tgheros}
 	\renewcommand{\familydefault}{\sfdefault}
-	\RequirePackage[scaled = 1.14]{inconsolata}
+	\RequirePackage[scaled = 1.14, narrow]{inconsolata}
 
-	% - Language Settings - %
+	% Language settings
 	\ifbool{@portuguese}
 		{ \PassOptionsToPackage{english, main = portuguese}{babel} }
 		{ \PassOptionsToPackage{portuguese, main = english}{babel} }
 
 	\RequirePackage{babel}
 }
+
+% Load the newtxsf math font (engine agnostic) if origmath isn't activated
 \notbool{@origmath}{\RequirePackage{newtxsf}}{}
 
 \RequirePackage{microtype}
@@ -135,12 +147,15 @@
 \RequirePackage{caption}
 \RequirePackage{totpages}
 
+% Default IST regulations
 \geometry{a4paper,margin = 2.5cm}
 \setstretch{1.5}
 
+% Caption definitions, not mandatory but look a bit better
 \captionsetup{labelfont = bf, margin = 15pt}
 \captionsetup[table]{position = top, skip = 3pt}
 
+% Set the IST colors if the bw option is not chosen
 \ifbool{@bw}{
 	\definecolor{ist-cyan}{cmyk}{1,1,1,1}
 	\definecolor{ist-gray}{cmyk}{1,1,1,1}
@@ -149,12 +164,14 @@
 	\definecolor{ist-gray}{cmyk}{0.2,0,0,0.8}
 }
 
+% Bind the defined colors to their hyperref targets
 \hypersetup{colorlinks,
 	linkcolor	= {ist-cyan},
 	citecolor	= {ist-cyan},
 	urlcolor	= {ist-cyan}
 }
 
+% Prevent the ToC from getting colors
 \notbool{@bw}{
 	\preto\tableofcontents{\begingroup\hypersetup{linkcolor = black}}
 	\appto\tableofcontents{\endgroup}
@@ -164,6 +181,7 @@
 	\appto\listoftables{\endgroup}
 }
 
+% Define a warning if the document surpasses 100 pages (IST rules)
 \def\maxPages{100}
 \AfterEndDocument{
 	\ifnumcomp{\theTotPages}{>}{\maxPages}{
@@ -174,7 +192,16 @@
 	}{}
 }
 
-% - Class Commands - %
+% Define PDF metadata for PDF readers to use
+\hypersetup{unicode = true}
+\ifbool{unicode}
+	{ \hypersetup{pdfcreator = {Xe/LuaLaTeX with the ist-thesis class}} }
+	{ \hypersetup{pdfcreator = {pdfLaTeX with the ist-thesis class}} }
+\ifbool{@english}
+	{ \hypersetup{pdflang = {English}} }
+	{ \hypersetup{pdflang = {Português}} }
+
+% Defining class metadata variables for various purposes
 \newrobustcmd*\tsubtitle{}
 \newrobustcmd*\tsupervisor{Prof. Lorem Ipsum \tand Prof. Lorem Ipsum}
 \newrobustcmd*\tchairperson{Prof. Lorem Ipsum}
@@ -184,6 +211,7 @@
 \newrobustcmd*\tcoverimagewidth{0.5}
 \newrobustcmd*\tand{\\ &}
 
+% Default values for class metadata (language dependent)
 \ifbool{@english}{
 	\newrobustcmd*\ttitle{[Thesis Title]}
 	\newrobustcmd*\tauthor{[Candidate Full Name]}
@@ -196,9 +224,10 @@
 	\newrobustcmd*\tdate{[Mês e Ano]}
 }
 
-\newrobustcmd*\settitle[1]{\renewcommand\ttitle{#1}}
-\newrobustcmd*\setsubtitle[1]{\renewcommand\tsubtitle{#1}}
-\newrobustcmd*\setauthor[1]{\renewcommand\tauthor{#1}}
+% Define user commands to set the class metadata (and some PDF metadata entries too)
+\newrobustcmd*\settitle[1]{\renewcommand\ttitle{#1}\hypersetup{pdftitle = {#1}}}
+\newrobustcmd*\setsubtitle[1]{\renewcommand\tsubtitle{#1}\hypersetup{pdfsubject = {#1}}}
+\newrobustcmd*\setauthor[1]{\renewcommand\tauthor{#1}\hypersetup{pdfauthor = {#1}}}
 \newrobustcmd*\setdegree[1]{\renewcommand\tdegree{#1}}
 \newrobustcmd*\setinstitution[1]{\renewcommand\tinstitution{#1}}
 \newrobustcmd*\setdate[1]{\renewcommand\tdate{#1}}
@@ -210,6 +239,7 @@
 	\renewcommand\tcoverimagewidth{#1}
 }
 
+% Create the cover layout and attribute it to the makecover command
 \newrobustcmd{\makecover}{
 	\pagenumbering{roman}
 	\setcounter{page}{0}
@@ -223,7 +253,11 @@
 		\par\vspace{10mm}
 		{\Large \tsubtitle}
 		\par\vspace{10mm}
-		{\Large\bfseries \tauthor}
+		{\Large\bfseries
+			\begin{tabular}{c c}
+				&\tauthor
+			\end{tabular}
+		}
 		\par\vspace{10mm}
 		\ifbool{@english}
 			{\large Thesis to obtain the Master of Science Degree in}
@@ -255,10 +289,11 @@
 	\end{titlepage}
 }
 
+% Define the dedication environment
 \newenvironment{dedication}{
 	\newpage
 	\vspace*{40mm}
-	\renewcommand\baselinestretch{1.1}
+	\setstretch{1.1}
 	\itshape
 	\begin{flushright}
 }{
@@ -266,31 +301,36 @@
 	\cleardoublepage
 }
 
+% Define the acknowledgement environment
 \newenvironment{acknowledgements}{
 	\newpage
 	\vspace*{30mm}
 	\ifbool{@english}
 		{ \section*{Acknowledgements} }
 		{ \section*{Agradecimentos} }
+	\noindent
 }{
 	\cleardoublepage
 }
 
+% Define the abstract environment with an optional keyword argument
+% Defined as tabstract to prevent confusion with the report class abstract environment
 \newenvironment{tabstract}[1]{
 	\newpage
-	\newcommand*\ackkey[1]{#1}
+	\newcommand*\abskey[1]{#1}
 	\vspace*{60mm}
-	\begin{center}
-		\ifbool{@english}
-			{ \section*{Abstract} }
-			{ \section*{Resumo} }
-		\end{center}
+	\ifbool{@english}
+		{ {\centering\section*{Abstract}} }
+		{ {\centering\section*{Resumo}} }
+	\noindent
 }{
 	\par\vspace{\fill}
 	\ifbool{@english}
-		{ {\large \textbf{Keywords:} \ackkey{}} }
-		{ {\large \textbf{Palavras-Chave:} \ackkey{}} }
+		{ {\noindent\large\textbf{Keywords:} \abskey{}} }
+		{ {\noindent\large\textbf{Palavras-Chave:} \abskey{}} }
 	\cleardoublepage
 }
 
+% Define the mainstart command to start the main part of the text
+% Assists in switching from roman to arabic page numbering
 \newrobustcmd\mainstart{\cleardoublepage\pagenumbering{arabic}}
