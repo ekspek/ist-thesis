@@ -6,11 +6,13 @@
 \usepackage{makecell}
 \usepackage{metalogo}
 \usepackage{booktabs}
+\usepackage{bm}
 
 \usepackage{minted}
 \definecolor{bg}{rgb}{0.97,0.97,0.97}
-\setminted{bgcolor = bg, breaklines, linenos}
+\setminted{bgcolor = bg, breaklines, linenos, baselinestretch = 1.15}
 \setmintedinline{bgcolor = {}}
+\renewcommand{\theFancyVerbLine}{\scriptsize\textsf{\arabic{FancyVerbLine}}}
 
 \newrobustcmd*\package[1]{\href{https://ctan.org/pkg/#1}{\textcolor{ist-cyan}{\texttt{#1}}}}
 
@@ -276,7 +278,7 @@ O tópico de tipos de letra tem vários pormenores a descrever, mas a escolha de
 \subsection{Tipo de Letra Principal}
 \label{sec:mainfont}
 
-Em contraste com o tipo de letra de raíz de qualquer documento \LaTeX{}\footnotemark{}, \textit{Computer Modern}, o tipo de letra especificado pelo guia de preparação da dissertação, \textit{Arial} é muito distinto, mas igualmente (ou mais) reconhecível. No entanto, um dos problemas é que este tipo de letra é muito mais omnipresente em sistemas com \textit{Windows} do que no restantes, como também na internet. É, por isso, um tipo de letra que não encontrou implementação nativa em \LaTeX{}.
+Em contraste com o tipo de letra de raíz de qualquer documento \LaTeX{}\footnotemark{}, \textit{Computer Modern}, o tipo de letra especificado pelo guia de preparação da dissertação, \textit{Arial}, é muito distinto, mas igualmente (ou mais) reconhecível. No entanto, um dos problemas é que este tipo de letra é muito mais omnipresente em sistemas com \textit{Windows} do que no restantes, como também na internet. É, por isso, um tipo de letra que não encontrou implementação nativa em \LaTeX{}.
 \footnotetext{Neste caso referimo-nos a documentos utilizando as classes base de \LaTeX{}, como \texttt{article}, \texttt{report}, ou \texttt{book}, entre outras.}
 
 No entanto, \textit{Arial} é baseado no tipo de letra \textit{Helvetica}, que é facilmente disponível online em vários formatos e codificações. Os dois tipos de letra são praticamente indistinguíveis, sendo o design de \textit{Arial} baseado fortemente em \textit{Helvetica} na altura da sua criação. Esta segunda opção, pela sua facilidade de obtenção, já encontrou várias implementações em \LaTeX{}.
@@ -285,7 +287,7 @@ Para o tipo de letra base deste projeto escolhemos o tipo de letra \href{https:/
 
 \subsection{\textit{Monoespaço}}
 
-O tipo de letra monoespaçado escolhido para o projeto foi \texttt{Inconsolata}, pela aparência relativamente semelhante ao tipo de letra principal, mas principalmente por preferência pessoal. Embora este tipo de letra não seja extensivamente utilizado na maioria das teses, é fulcral na introdução de código de programação a meio do texto onde caracteres monoespaçados mantêm coerência entre cada linha.
+O tipo de letra monoespaçado escolhido para o projeto foi \texttt{Inconsolata Narrow}, pela aparência relativamente semelhante ao tipo de letra principal, mas principalmente por preferência pessoal. Embora este tipo de letra não seja extensivamente utilizado na maioria das teses, é fulcral na introdução de código de programação a meio do texto onde caracteres monoespaçados mantêm coerência entre cada linha.
 
 \subsection{Tipografia Matemática}
 \label{sec:mathfont}
@@ -323,7 +325,7 @@ Os tipos de letra referidos nas secções anteriores estão demonstrados nesta s
 	{\rmfamily\textsample} \\
 	{\bfseries\rmfamily\textsample} \\
 	{$\textsample$} \\
-	{$\mathbf\textsample$} \\
+	{$\bm{\textsample}$} \\
 \end{quote}
 
 Também incluído aqui está uma demonstração de uma equação no tipo de letra \package{newtxsf} referido na secção \ref{sec:mathfont}.
