@@ -281,7 +281,7 @@
 \newenvironment{dedication}{
 	\newpage
 	\vspace*{40mm}
-	\renewcommand\baselinestretch{1.1}
+	\setstretch{1.1}
 	\itshape
 	\begin{flushright}
 }{
@@ -296,6 +296,7 @@
 	\ifbool{@english}
 		{ \section*{Acknowledgements} }
 		{ \section*{Agradecimentos} }
+	\noindent
 }{
 	\cleardoublepage
 }
@@ -306,6 +307,7 @@
 	\newpage
 	\newcommand*\abskey[1]{#1}
 	\vspace*{60mm}
+
 	\begin{center}
 		\ifbool{@english}
 			{ \section*{Abstract} }
