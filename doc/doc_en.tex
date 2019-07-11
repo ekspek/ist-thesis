@@ -1,0 +1,371 @@
+% arara: xelatex: { synctex: yes }
+\documentclass[english]{../ist-thesis}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{makecell}
+\usepackage{metalogo}
+\usepackage{booktabs}
+\usepackage{bm}
+
+\usepackage[cache=false]{minted}
+\definecolor{bg}{rgb}{0.97,0.97,0.97}
+\setminted{bgcolor = bg, breaklines, linenos, baselinestretch = 1.15}
+\setmintedinline{bgcolor = {}}
+\renewcommand{\theFancyVerbLine}{\scriptsize\textsf{\arabic{FancyVerbLine}}}
+
+\newrobustcmd*\package[1]{\href{https://ctan.org/pkg/#1}{\textcolor{ist-cyan}{\texttt{#1}}}}
+
+\begin{document}
+
+\begin{center}
+	{\Huge\bfseries The \texttt{ist-thesis} class}
+	\par\bigskip
+	{\Large Unofficial \LaTeX{} class for Instituto Superior Técnico}
+	\par\bigskip\smallskip
+	Daniel de Schiffart \\
+	{\small with support from} \\
+	{\setstretch{1}João Gonçalves \\}
+	\url{https://github.com/ekspek/ist-thesis}
+\end{center}
+
+\bigskip\bigskip
+
+\begin{center}
+	\section*{Summary}
+\end{center}
+This class aims to prepare and format any \LaTeX{} document as a Master's thesis according to Instituto Superior Técnico's regulations.
+
+\tableofcontents
+
+\clearpage
+
+\section*{Introduction}
+
+I must leave a few words of mine right here.
+
+I learned how to use \LaTeX{} two years ago, at the beginning of my 4th grade, and as expected, it was by writing reports to Técnico's courses. After having to spend several hours writing reports for Telecommunications and Digital Systems Design, I took a liking to it, and have been learning bit by bit the limits of what \LaTeX{} is capable of (which, \textit{spoiler alert}, are a lot). Watching the semesters fly by and getting ready to carry Técnico on my back, I wanted to leave something behind written in \LaTeX{} for my fellow younger peers. A notebook, problems solved, anything. Time passed and laziness made me postpone any motivation for this, and the last thing anyone wants to hear about in vacation is a finished course. Therefore, I started the only thing that made sense as the end approached: spend time with the Thesis' model several months before it even started.
+
+
+This project started at the end of last year as a hobby. I was starting to get used to \LaTeX{}, and began to notice how much certain \textit{packages} and  definitions were being reused in every report. Since \LaTeX{}'s classes already defined tons of things when they were loaded, I started to take that into account, looking at the classes online. I never thought I'd be able to write a class from scratch - however, they really just contain \LaTeX{} code. So, after some setbacks, my code started to slowly appear.
+
+
+Much of this work contains knowledge learned by writing the class \href{https://github.com/ekspek/ist-relatorio}{\texttt{ist-relatorio}}, a much more experimental project, which still proves itself to be useful when I need it. Although less versatile, this class posed several challenges in the interface between the user and the \textit{output}, but I think that, mostly, the final product looks good, whilst still providing some versatility. In fact, to prove that versatility, I decided to implement this very documentation using the class, just to see if it worked well. I know that abusing \textit{Arial} in every page burns the eyes, but Técnico is the one in charge \verb|¯\_('_')_/¯|.
+
+The main inspiration of moving to the thesis was not only due to my deadline to deliver it, which made me reduce it more and more, but also due to observing the many thesis models available on the web, for many different universities around the world. It didn't make sense seeing Técnico standing behind, specially considering the \textit{huge huge} technological advances in our little corner of the University of Lisbon. Special shoutouts to the TUDelft's thesis model, based on their \textit{Huisstijl}, which I read and re-read to learn how to create classes.
+
+Obviously, much of my inspiration was also drawn from Professor André Marta's thesis model, who still holds the \textit{ de facto} Técnico's \LaTeX{} model. I admire his availability to share his code without restrictions, as well how well put together it is - so much so that I considered completely dropping my idea and just use his class. I don't want in any way to compete with Professor Marta's project - I just believe there can be two different approaches to the same problem. Check out \href{https://fenix.tecnico.ulisboa.pt/homepage/ist31052/documentos-para-elaboracao-da-tese}{his project} and make your choice.
+
+
+There is not much more to add. Take a look at the final product, contact me if needed, share the project, contribute if you can, spread the word if you like what is made here, or leave suggestions to what could improve.
+
+Good luck with your thesis!
+
+\begin{flushright}\itshape
+	Daniel Lopes de Schiffart \\
+	Aluno 81479 \\
+	Fevereiro de 2019
+\end{flushright}
+
+\clearpage
+
+\chapter{\textit{Quick Start} -- The Basics}
+
+To load the class and create a document that looks like a thesis, you have to download the class file, \texttt{ist-thesis.cls}. After that, in a seperate \texttt{.tex} file, the first line of the document has to be
+\begin{minted}[linenos = false]{tex}
+\documentclass{ist-thesis}
+\end{minted}
+This loads the class. Write any text and compile to test it. The smallest possible valid \texttt{.tex} document that compiles with no problems can be found below:
+\begin{minted}{tex}
+\documentclass{ist-thesis}
+
+\begin{document}
+
+Hello World!
+
+\end{document}
+\end{minted}
+
+More properties of this class can be found in the next chapters.
+
+\chapter{Optional Arguments}
+
+When loading the class, with the command \mintinline{tex}{\documentclass}, it's possible to give optional arguments to define global options. These arguments are listed here.
+\begin{description}
+    \item [portuguese] Sets the document's language to Portuguese, mainly the syntax of macros and keywords, such as índice (table of contents) and resumo (summary). This option is selected by default, and as such does not need to be set.
+        \item [english] Sets the document's language as English. Similar to the \texttt{portuguese} option. 
+	\item [\texttt{bw}] Enables the black and white option. Replaces all occurences of cyan on the document, such as in links and URLs.
+        \item [\texttt{origmath}] Returns the math font initially loaded by \LaTeX{}. Follows from the discussion on section \ref{sec:mathfont}, and avoids loading the \textit{package} \package{newtxsf}.
+\end{description}
+
+To enable one or more arguments, insert at the beginning of the file, between square brackets, the arguments to use.
+\begin{minted}[linenos = false]{tex}
+\documentclass[english]{ist-thesis}
+\end{minted}
+To load more than one argument, split them by commas.
+\begin{minted}[linenos = false]{tex}
+\documentclass[english,origmath]{ist-thesis}
+\end{minted}
+
+\chapter{Commands and Environments}
+
+This chapter contains the official documentation for usable commands and environments implemented on the class, as well as their functions and dependencies inside the document. Also included are some modifications made to base \LaTeX{} documents, so they work correctly with the implemented functions.
+
+These commands can be split into three categories: used for the cover page and document's information, on the section \ref{sec:metadata}; used for the structure and special sections, on the section \ref{sec:spec}; and three internal commands defined and used by the class, on the section \ref{sec:internal}.
+
+\section{Cover page and Thesis' Data}\label{sec:metadata}
+
+The class implements a command which allows automatic cover page creation, by requesting information from the user about the document's data and placing it on the right place. To create the cover page, just use the command
+\begin{minted}{tex}
+\makecover
+\end{minted}
+Since \LaTeX{} analyzes code from top to bottom, it is recommended that the user calls this command at the beginning of the document, right next to  \mintinline{tex}{\begin{document}}.
+\begin{minted}{tex}
+\begin{document}
+
+\makecover
+\end{minted}
+
+By itself, this command only returns a cover page with the filled preset values. To change these values, the class provides a set of commands, one for each cover page entry.
+
+\begin{description}
+	\item [\texttt{\textbackslash{}settitle\{}\textit{<title>}\texttt{\}}] Sets the title.
+	\item [\texttt{\textbackslash{}setsubtitle\{}\textit{<title>}\texttt{\}}] Sets the subtitle.
+	\item [\texttt{\textbackslash{}setauthor\{}\textit{<author(s)>}\texttt{\}}] Sets the author(s). To set more than one author, the class provides a command to split authors: \texttt{\textbackslash{}tand}. Check the section \ref{sec:cmd_example} for usage examples.
+	\item [\texttt{\textbackslash{}setdegree\{}\textit{<course>}\texttt{\}}] Sets the course name.
+	\item [\texttt{\textbackslash{}setinstitution\{}\textit{<institution>}\texttt{\}}] Sets the institution. Residual command, it's not used on the cover page.
+	\item [\texttt{\textbackslash{}setdate\{}\textit{<date>}\texttt{\}}] Sets the date.
+	\item [\texttt{\textbackslash{}setsupervisor\{}\textit{<supervisor(s)>}\texttt{\}}] Sets the supervisor(s). To set more than one supervisor, check the command to set authors.
+	\item [\texttt{\textbackslash{}setchairperson\{}\textit{<president>}\texttt{\}}] Sets the chairperson..
+	\item [\texttt{\textbackslash{}setcommittee\{}\textit{<committee>}\texttt{\}}] Sets the committee. To set more than one person, check the command to set authors.
+        \item [\texttt{\textbackslash{}setcoverimage[}\textit{<relative width>}\texttt{]\{}\textit{<image>}\texttt{\}}] Sets the cover page image. In this case, it's required to provide the image name, which should be found in the same directory as the document. The syntax is the same as the \mintinline{tex}{\includegraphics} command, but it only accepts one argument, which is the image width relative to the text width - for example, a value of 1 would return an image which spans the cove page from margin to margin.
+\end{description}
+
+\subsection{Sample Usage}\label{sec:cmd_example}
+
+To showcase the usage of the previous section's commands, here's a syntax example.
+\begin{minted}{tex}
+\settitle{Schiffart's Thesis}
+\setsubtitle{About a theme}
+\setauthor{Daniel de Schiffart}
+\setdegree{Mestrado Integrado em Engenharia Aeroespacial}
+\setsupervisor{Supervisor}
+\setchairperson{President}
+\setcommittee{Prof. A. \tand Prof. B.}
+\setcoverimage[0.5]{example-image-a}
+\end{minted}
+
+\section{Special sections}\label{sec:spec}
+
+When writing a thesis, there are certain sections written by most of the authors. Some of the sections described on the Academic Services are, therefore, implemented on the class through the use of special \footnotemark{} \LaTeX{} environments, so they can be attributed special formatting and make any writing easier. They are three: dedication, acknowledgments, and the abstract.
+    \footnotetext{\LaTeX{} environments are macros similar to commands, but instead of being called once and their content being written inside the arguments, the environments have a beginning and an end, delimited by the \texttt{\textbackslash{}begin} e \texttt{\textbackslash{}end} command. Check the examples of section \ref{sec:env_example}.}
+
+The environments are defined in \LaTeX{} as follows.
+\begin{description}
+	\item [\texttt{dedication}] Dedication.
+	\item [\texttt{acknowledgements}] Acknowledgements.
+        \item [\texttt{tabstract}] Abstract. This environment adds key-words to the end of the page, which can be written through a special argument. Check the section \ref{sec:env_example} for syntax.
+\end{description}
+
+The text inside these environments is put into a separate page for each, and they appear in the document in the order written in the file.
+\subsection{Sample Usage}\label{sec:env_example}
+
+Sample usage of the provided environments. It is worth noting that, in the abstract environment (\texttt{tabstract}), there is an extra argument, inside square brackets, which will be printed at the bottom of the page.
+
+\begin{minted}{tex}
+\begin{dedication}
+    To dedicate to whoever you want.
+\end{dedication}
+
+\begin{acknowledgements}
+    Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying.
+\end{acknowledgements}
+
+
+\begin{tabstract}{Summary, Key-Words, \textit{Abstract}}
+    Summary and Key-Words (in portuguese and english). The abstract describes the goals, the project's content and the conclusions. It has to be written in portuguese and english, with at most 250 words for each, and be next to 4-6 keywords. 
+\end{tabstract}
+\end{minted}
+
+\section{Internal Commands}\label{sec:internal}
+
+These are used to create the cover page, and return the values defined by the user on section \ref{sec:metadata}'s commands. They are just used internally by the class, but can be used by the user through the document, to place their value somewhere on the text.
+
+\begin{minted}[fontsize = \small]{tex}
+\ttitle{}
+\tsubtitle{}
+\tauthor{}
+\tsupervisor{}
+\tdegree{}
+\tchairperson{}
+\tcommittee{}
+\tinstitution{}
+\tdate{}
+\tcoverimage{}
+\tcoverimagewidth{}
+\end{minted}
+
+\section{Full list of commands and environments.}
+
+On this section, all commands available to the user can be found.
+
+First, the commands to create the cover page.
+\begin{minted}[fontsize = \small]{tex}
+\settitle{}
+\setsubtitle{}
+\setauthor{}
+\setdegree{}
+\setinstitution{}
+\setdate{}
+\setsupervisor{}
+\setchairperson{}
+\setcommittee{}
+\setcoverimage[]{}
+
+\tand
+
+\makecover
+\end{minted}
+
+Then, the available environments.
+\begin{minted}[fontsize = \small]{tex}
+\begin{dedication}
+\end{dedication}
+
+\begin{acknowledgements}
+\end{acknowledgements}
+
+\begin{tabstract}{}
+\end{tabstract}
+\end{minted}
+
+And lastly, the internal commands.
+\begin{minted}[fontsize = \small]{tex}
+\ttitle{}
+\tsubtitle{}
+\tauthor{}
+\tsupervisor{}
+\tdegree{}
+\tchairperson{}
+\tcommittee{}
+\tinstitution{}
+\tdate{}
+\tcoverimage{}
+\tcoverimagewidth{}
+\end{minted}
+
+\chapter{Class Implementation}
+
+This chapter is dedicated to describing how the class and all it's functions were implemented inside the \TeX{} and \LaTeX{} context, with special care given to the \textit{packages} used. It has, therefore, a more technical nature, and it's reading is not required for any usage of the class.
+
+\section{Page style}
+
+The page settings are reduced to the margin sizing. They are set to $2.5$ centimeters on all sides, using the \package{geometry} \textit{package}.
+
+Line spacing is also set through the \package{setspace} \textit{package}, which avoids defining the line spacing for the \textbf{entire} text, defining instead the spacing for the text body. This prevents changing spacing in, for instance, captions of images and tables. It also allows the creation of exceptions in the middle of the text, through the \mintinline{tex}{\setspace} command. However, this is only recommened in special situations, in accordance to the Academic Services' regulation.
+
+\section{Colors and Hyperlinks}
+
+Hyperlinks found in the example thesis and in this documentation are achieved through the \package{hyperref} \textit{package} , and are set to use colored text (instead of rectangular links surrounding the text, which is the default behaviour). This can be changed using the commands described in the official documentation for the \textit{package}.
+
+The colors used in these hyperlinks (and other places) were set using the \package{xcolor} \textit{package}. The most frequently used color is Instituto Superior Técnico's cyan, provided by the \href{https://tecnico.ulisboa.pt/en/about-tecnico/institutional/logo-identity-standards/}{Identity Standards}, and is set as $1,0,0,0$, on the CMYK scale. The second color set is a $0.2,0,0,0.8$ gray, on the CMYK scale, also found in the aforementioned document.
+
+These colors are set in the class as \texttt{ist-cyan} and \texttt{ist-gray} and can be reused according to the \package{xcolor} \textit{package} syntax.
+
+\section{Fonts}
+
+Fonts have many details to write about, but the choice of each of them is tied to the Academic Services' decision to pick \textit{Arial} as the main document's font. The discussion of each implemented font includes a relevant justification, but it is important to make clear that non-main fonts can be replaced according to the user's preference. Broadly speaking, the implementations for a document's fonts, whether the document uses the \texttt{ist-thesis} class or not, are similar and should work correctly.
+
+\subsection{Main font}
+\label{sec:mainfont}
+
+The Academic Services' choice  of font (\textit{Arial}) is quite distinct from the root font of any \LaTeX{} document\footnotemark{} (\textit{Computer Modern}), but it is, perhaps, even more recognizable. However, a problem with this font is that it is way more commonly found in \textit{Windows} systems than in others. It is, therefore, a font without a native implementation in \LaTeX{}.
+\footnotetext{In this case, we refer to documents which use the base \LaTeX{} classes, such as \texttt{article}, \texttt{report}, or \texttt{book}, amongst others.}
+
+Luckily, \textit{Arial} is based on \textit{Helvetica}, which is easily available only in several formats and codings. The two fonts are pretty much indistiguishable, since \textit{Arial}'s design was heavily based on \textit{Helvetica}'s. This second option, due to it's ease of access, has found several implementations in \LaTeX{}.
+
+For this project's base font, we chose the \href{https://ctan.org/pkg/tex-gyre-heros}{\TeX{} Gyre Heros} font, included in any \LaTeX{} distribution. The reasoning was that it is easy to implement, and is pretty good with regards to mixing properties, from \textbf{bold} text to \textit{italic} and {\bfseries\itshape both at the same time}. It also provides support to foreign characters, namely characters used in Portuguese. The biggest problem in this font is the lack of math typesetting, something that will be discussed in section \ref{sec:mathfont}.
+
+\subsection{\textit{Monospacing}}
+
+The monospaced font chosen was \texttt{Inconsolata Narrow}, partly due to it's similarity with the main font, but mostly due to personal preference. Although this font is not extensively used in most thesis, it is important to add programming code in the middle of the text, where monospaced characters keep coherence from line to line.
+
+\subsection{Math typesetting}
+\label{sec:mathfont}
+
+As previsouly mentioned in section \ref{sec:mainfont}, the font used for math is not included in the main font used, and, therefore, had to be selected.
+
+For experienced \LaTeX{} users, the root font (\textit{Computer Modern}) already includes all needed functions for a wide array of math writing needs. And although this is true, the clash between \textit{Arial} (or \TeX{} Gyre Heros, in our case) and \textit{Computer Modern} is not the most aesthetically pleasing, which led to the search of a better alternative. Despite that, for those not worried with these details or happy with the original math font, an \texttt{origmath} option was included on the class, to keep that font.
+
+On this project, the math font used is provided by the \package{newtxsf} \textit{package}.
+
+\subsection{\textit{Serif} fonts}
+
+To the most perceptive readers, you may have noticed that there is a font family left to define: \textit{serif}.
+
+To the curious readers, an explanation follows. For each document, \LaTeX{} implements 2 main font families: \textit{serif} and \textit{sans-serif}. These terms are used, in general, to describe fonts. The former includes fonts with more details, which are better suited for paper reading. The latter includes simpler and more rounded fonts, much easier to read in screens, where details would sacrifice readability. To the more interested, \href{https://en.wikipedia.org/wiki/Serif}{this wikipedia article} can clear any doubts.
+
+By default, \LaTeX{} uses \textit{serif} fonts, as the already mentioned \textit{Computer Modern}, leaving the choice of using \textit{sans-serif} at any point in the text to the user. However, for this project, according to the regulations of Instituto Superior Técnico, we are using a \textit{sans-serif} text as a default, which implies that the usage of a \textit{serif} text is available when needed.
+
+Since this topic is of low importance, we left this font without any modifications, which implies that, when called, \textrm{such as here}, we get the root \LaTeX{} font.
+
+\subsection{Showcases}
+
+The previously mentioned fonts can be seen in this sections. In order: normal fonts (\textit{sans-serif}), italic, small caps, \textit{serif}, and math, all next to their bold equivalent.
+
+\newrobustcmd*\textsample{Lorem ipsum dolor sit amet, consectetuer adipiscing elit.}
+\begin{quote}
+	\textsample \\
+	{\bfseries\textsample} \\
+	{\itshape\textsample} \\
+	{\bfseries\itshape\textsample} \\
+	{\scshape\textsample} \\
+	{\bfseries\scshape\textsample} \\
+	{\ttfamily\textsample} \\
+	{\bfseries\ttfamily\textsample} \\
+	{\rmfamily\textsample} \\
+	{\bfseries\rmfamily\textsample} \\
+	{$\textsample$} \\
+        {$\bm{\textsample}$} \\
+\end{quote}
+
+Also included is a showcase of an equation using the font from \package{newtxsf}, mentioned in section \ref{sec:mathfont}.
+\begin{gather*}
+	\mathbb{P}\left(\frac{X_1 + \cdots + X_n}{\sqrt{n}} \leq y\right) \rightarrow \mathrm{R}(y) = \int_{-\infty}^{y} \frac{e^{-t^2/2}}{\sqrt{2\pi}}dt \qquad \mathrm{as} \quad n \rightarrow \infty
+\end{gather*}
+
+\section{Used \textit{Packages}}
+
+In this section, a summary of all \textit{packages} used to implement the class can be found.
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{c|c}\toprule
+		pdf\LaTeX{}				& \makecell{\XeLaTeX{} or \\ \LuaLaTeX{}}	\\
+		\midrule
+		\multicolumn{2}{c}{\package{etoolbox}}				\\
+		\multicolumn{2}{c}{\package{ifluatex}}				\\
+		\multicolumn{2}{c}{\package{ifxetex}}				\\
+		\multicolumn{2}{c}{\package{ifpdf}}					\\
+		\multicolumn{2}{c}{\package{mathtools}}				\\
+		\multicolumn{2}{c}{\package{graphicx}}				\\
+		\multicolumn{2}{c}{\package{xcolor}}				\\
+		\multicolumn{2}{c}{\package{hyperref}}				\\
+		\multicolumn{2}{c}{\package{geometry}}				\\
+		\package{inputenc}		&							\\
+		\package{fontenc}		&							\\
+		\phantom{polyglossia}	& \package{fontspec}		\\
+		\package{babel}			& \package{polyglossia}		\\
+		\package{tgheros}		&							\\
+		\package{inconsolata}	&							\\
+		\multicolumn{2}{c}{\package{newtxsf}}				\\
+		\multicolumn{2}{c}{\package{microtype}}				\\
+		\multicolumn{2}{c}{\package{tocbibind}}				\\
+		\multicolumn{2}{c}{\package{setspace}}				\\
+		\multicolumn{2}{c}{\package{totpages}}				\\
+		\bottomrule
+	\end{tabular}
+	\caption{\textit{Packages} loaded by the class without optional arguments, depending on the used compiler.}
+	\label{tab:packages}
+\end{table}
+
+\end{document}
