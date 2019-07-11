@@ -112,16 +112,6 @@
 	}{}
 	\renewcommand{\familydefault}{\sfdefault}
 	\setmonofont[Scale = 1.14]{InconsolataN}
-
-	% Language settings
-	\RequirePackage{polyglossia}
-	\ifbool{@portuguese}{
-		\setmainlanguage{portuges}
-		\setotherlanguage[variant = british]{english}
-	}{
-		\setmainlanguage[variant = british]{english}
-		\setotherlanguage{portuges}
-	}
 }{
 	% Font settings
 	\RequirePackage[utf8]{inputenc}
@@ -129,14 +119,13 @@
 	\RequirePackage{tgheros}
 	\renewcommand{\familydefault}{\sfdefault}
 	\RequirePackage[scaled = 1.14, narrow]{inconsolata}
-
-	% Language settings
-	\ifbool{@portuguese}
-		{ \PassOptionsToPackage{english, main = portuguese}{babel} }
-		{ \PassOptionsToPackage{portuguese, main = english}{babel} }
-
-	\RequirePackage{babel}
 }
+
+% Language settings
+\ifbool{@portuguese}
+	{ \PassOptionsToPackage{english, main = portuguese}{babel} }
+	{ \PassOptionsToPackage{portuguese, main = english}{babel} }
+\RequirePackage{babel}
 
 % Load the newtxsf math font (engine agnostic) if origmath isn't activated
 \notbool{@origmath}{\RequirePackage{newtxsf}}{}
@@ -340,41 +329,33 @@
 	\vspace*{60mm}
 	\ifbool{@english}{
 		\ifdefstring{\abslang}{portuguese}{
-			\ifbool{unicode}
-				{ \begin{portuges} }
-				{ \begin{otherlanguage}{portuguese} }
+			\begin{otherlanguage}{portuguese}
 			{\centering\section*{Resumo}}
 		}{
 			{\centering\section*{Abstract}}
 		}
 	}{
 		\ifdefstring{\abslang}{english}{
-			\ifbool{unicode}
-				{ \begin{english} }
-				{ \begin{otherlanguage}{english} }
+			\begin{otherlanguage}{english}
 			{\centering\section*{Abstract}}
 		}{
 			{\centering\section*{Resumo}}
 		}
 	}
-	\noindent
+	\noindent\noindent
 }{
 	\par\vspace{\fill}
 	\ifbool{@english}{
 		\ifdefstring{\abslang}{portuguese}{
 			{\noindent\large\textbf{Palavras-Chave:} \abskey{}}
-			\ifbool{unicode}
-				{ \end{portuges} }
-				{ \end{otherlanguage} }
+			\end{otherlanguage}
 		}{
 			{\noindent\large\textbf{Keywords:} \abskey{}}
 		}
 	}{
 		\ifdefstring{\abslang}{english}{
 			{\noindent\large\textbf{Keywords:} \abskey{}}
-			\ifbool{unicode}
-				{ \end{english} }
-				{ \end{otherlanguage} }
+			\end{otherlanguage}
 		}{
 			{\noindent\large\textbf{Palavras-Chave:} \abskey{}}
 		}
