@@ -1,5 +1,5 @@
 % arara: xelatex: { synctex: yes }
-\documentclass[english]{../ist-thesis}
+\documentclass[english]{ist-thesis}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -25,8 +25,9 @@
 	\par\bigskip\smallskip
 	Daniel de Schiffart \\
 	{\small with support from} \\
-	{\setstretch{1}João Gonçalves \\}
-	\url{https://github.com/ekspek/ist-thesis}
+	João Gonçalves \\
+	João Lourenço \bigskip \\
+	\url{https://github.com/ekspek/ist-thesis} \bigskip \\
 \end{center}
 
 \bigskip\bigskip
@@ -35,6 +36,11 @@
 	\section*{Summary}
 \end{center}
 This class aims to prepare and format any \LaTeX{} document as a Master's thesis according to Instituto Superior Técnico's regulations.
+
+\vspace{\fill}
+\begin{center}
+    \textit{Document translated to English by João Lourenço}
+\end{center}
 
 \tableofcontents
 
@@ -54,7 +60,7 @@ Much of this work contains knowledge learned by writing the class \href{https://
 
 The main inspiration of moving to the thesis was not only due to my deadline to deliver it, which made me reduce it more and more, but also due to observing the many thesis models available on the web, for many different universities around the world. It didn't make sense seeing Técnico standing behind, specially considering the \textit{huge huge} technological advances in our little corner of the University of Lisbon. Special shoutouts to the TUDelft's thesis model, based on their \textit{Huisstijl}, which I read and re-read to learn how to create classes.
 
-Obviously, much of my inspiration was also drawn from Professor André Marta's thesis model, who still holds the \textit{ de facto} Técnico's \LaTeX{} model. I admire his availability to share his code without restrictions, as well how well put together it is - so much so that I considered completely dropping my idea and just use his class. I don't want in any way to compete with Professor Marta's project - I just believe there can be two different approaches to the same problem. Check out \href{https://fenix.tecnico.ulisboa.pt/homepage/ist31052/documentos-para-elaboracao-da-tese}{his project} and make your choice.
+Obviously, much of my inspiration was also drawn from Professor André Marta's thesis model, who still holds the \textit{de facto} Técnico's \LaTeX{} model. I admire his availability to share his code without restrictions, as well how well put together it is - so much so that I considered completely dropping my idea and just use his class. I don't want in any way to compete with Professor Marta's project - I just believe there can be two different approaches to the same problem. Check out \href{https://fenix.tecnico.ulisboa.pt/homepage/ist31052/documentos-para-elaboracao-da-tese}{his project} and make your choice.
 
 
 There is not much more to add. Take a look at the final product, contact me if needed, share the project, contribute if you can, spread the word if you like what is made here, or leave suggestions to what could improve.
@@ -63,8 +69,8 @@ Good luck with your thesis!
 
 \begin{flushright}\itshape
 	Daniel Lopes de Schiffart \\
-	Aluno 81479 \\
-	Fevereiro de 2019
+	Alumnus 81479 \\
+	February 2019
 \end{flushright}
 
 \clearpage
@@ -138,7 +144,7 @@ By itself, this command only returns a cover page with the filled preset values.
 	\item [\texttt{\textbackslash{}setsupervisor\{}\textit{<supervisor(s)>}\texttt{\}}] Sets the supervisor(s). To set more than one supervisor, check the command to set authors.
 	\item [\texttt{\textbackslash{}setchairperson\{}\textit{<president>}\texttt{\}}] Sets the chairperson..
 	\item [\texttt{\textbackslash{}setcommittee\{}\textit{<committee>}\texttt{\}}] Sets the committee. To set more than one person, check the command to set authors.
-        \item [\texttt{\textbackslash{}setcoverimage[}\textit{<relative width>}\texttt{]\{}\textit{<image>}\texttt{\}}] Sets the cover page image. In this case, it's required to provide the image name, which should be found in the same directory as the document. The syntax is the same as the \mintinline{tex}{\includegraphics} command, but it only accepts one argument, which is the image width relative to the text width - for example, a value of 1 would return an image which spans the cove page from margin to margin.
+        \item [\texttt{\textbackslash{}setcoverimage[}\textit{<relative width>}\texttt{]\{}\textit{<image>}\texttt{\}}] Sets the cover page image. In this case, it's required to provide the image name, which should be found in the same directory as the document. The syntax is the same as the \mintinline{tex}{\includegraphics} command, but it only accepts one argument, which is the image width relative to the text width - for example, a value of 1 would return an image which spans the cover page from margin to margin.
 \end{description}
 
 \subsection{Sample Usage}\label{sec:cmd_example}
@@ -157,14 +163,15 @@ To showcase the usage of the previous section's commands, here's a syntax exampl
 
 \section{Special sections}\label{sec:spec}
 
-When writing a thesis, there are certain sections written by most of the authors. Some of the sections described on the Academic Services are, therefore, implemented on the class through the use of special \footnotemark{} \LaTeX{} environments, so they can be attributed special formatting and make any writing easier. They are three: dedication, acknowledgments, and the abstract.
+When writing a thesis, there are certain sections written by most of the authors. Some of the sections described on the Academic Services are, therefore, implemented on the class through the use of special\footnotemark{} \LaTeX{} environments, so they can be attributed special formatting and make any writing easier. They are three: dedication, acknowledgments, and the abstract.
     \footnotetext{\LaTeX{} environments are macros similar to commands, but instead of being called once and their content being written inside the arguments, the environments have a beginning and an end, delimited by the \texttt{\textbackslash{}begin} e \texttt{\textbackslash{}end} command. Check the examples of section \ref{sec:env_example}.}
 
 The environments are defined in \LaTeX{} as follows.
 \begin{description}
 	\item [\texttt{dedication}] Dedication.
 	\item [\texttt{acknowledgements}] Acknowledgements.
-        \item [\texttt{tabstract}] Abstract. This environment adds key-words to the end of the page, which can be written through a special argument. Check the section \ref{sec:env_example} for syntax.
+    \item [\texttt{tabstract}] Abstract. This environment adds keywords to the end of the page, which can be written through a special argument. Check the section \ref{sec:env_example} for syntax.
+    \item [\texttt{fabstract}] Abstract. This environment is identical to the previous \texttt{tabstract} environment, but detects the document's language and typesets the abstract in the opposite language (portuguese when english, english when portuguese).
 \end{description}
 
 The text inside these environments is put into a separate page for each, and they appear in the document in the order written in the file.
@@ -182,9 +189,14 @@ Sample usage of the provided environments. It is worth noting that, in the abstr
 \end{acknowledgements}
 
 
-\begin{tabstract}{Summary, Key-Words, \textit{Abstract}}
-    Summary and Key-Words (in portuguese and english). The abstract describes the goals, the project's content and the conclusions. It has to be written in portuguese and english, with at most 250 words for each, and be next to 4-6 keywords. 
+\begin{tabstract}{Summary, Keywords, Abstract}
+    Summary and keywords (in portuguese and english). The abstract describes the goals, the project's content and the conclusions. It has to be written in portuguese and english, with at most 250 words for each, and be next to 4-6 keywords. 
 \end{tabstract}
+
+
+\begin{fabstract}{Resumo, Palavras-Chave, Resumo Analítico}
+    Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
+\end{fabstract}
 \end{minted}
 
 \section{Internal Commands}\label{sec:internal}
@@ -237,6 +249,9 @@ Then, the available environments.
 
 \begin{tabstract}{}
 \end{tabstract}
+
+\begin{fabstract}{}
+\end{fabstract}
 \end{minted}
 
 And lastly, the internal commands.
@@ -256,7 +271,7 @@ And lastly, the internal commands.
 
 \chapter{Class Implementation}
 
-This chapter is dedicated to describing how the class and all it's functions were implemented inside the \TeX{} and \LaTeX{} context, with special care given to the \textit{packages} used. It has, therefore, a more technical nature, and it's reading is not required for any usage of the class.
+This chapter is dedicated to describing how the class and all its functions were implemented inside the \TeX{} and \LaTeX{} context, with special care given to the \textit{packages} used. It has, therefore, a more technical nature, and its reading is not required for any usage of the class.
 
 \section{Page style}
 
@@ -282,13 +297,13 @@ Fonts have many details to write about, but the choice of each of them is tied t
 The Academic Services' choice  of font (\textit{Arial}) is quite distinct from the root font of any \LaTeX{} document\footnotemark{} (\textit{Computer Modern}), but it is, perhaps, even more recognizable. However, a problem with this font is that it is way more commonly found in \textit{Windows} systems than in others. It is, therefore, a font without a native implementation in \LaTeX{}.
 \footnotetext{In this case, we refer to documents which use the base \LaTeX{} classes, such as \texttt{article}, \texttt{report}, or \texttt{book}, amongst others.}
 
-Luckily, \textit{Arial} is based on \textit{Helvetica}, which is easily available only in several formats and codings. The two fonts are pretty much indistiguishable, since \textit{Arial}'s design was heavily based on \textit{Helvetica}'s. This second option, due to it's ease of access, has found several implementations in \LaTeX{}.
+Luckily, \textit{Arial} is based on \textit{Helvetica}, which is easily available only in several formats and codings. The two fonts are pretty much indistiguishable, since \textit{Arial}'s design was heavily based on \textit{Helvetica}'s. This second option, due to its ease of access, has found several implementations in \LaTeX{}.
 
 For this project's base font, we chose the \href{https://ctan.org/pkg/tex-gyre-heros}{\TeX{} Gyre Heros} font, included in any \LaTeX{} distribution. The reasoning was that it is easy to implement, and is pretty good with regards to mixing properties, from \textbf{bold} text to \textit{italic} and {\bfseries\itshape both at the same time}. It also provides support to foreign characters, namely characters used in Portuguese. The biggest problem in this font is the lack of math typesetting, something that will be discussed in section \ref{sec:mathfont}.
 
 \subsection{\textit{Monospacing}}
 
-The monospaced font chosen was \texttt{Inconsolata Narrow}, partly due to it's similarity with the main font, but mostly due to personal preference. Although this font is not extensively used in most thesis, it is important to add programming code in the middle of the text, where monospaced characters keep coherence from line to line.
+The monospaced font chosen was \texttt{Inconsolata Narrow}, partly due to its similarity with the main font, but mostly due to personal preference. Although this font is not extensively used in most thesis, it is important to add programming code in the middle of the text, where monospaced characters keep coherence from line to line.
 
 \subsection{Math typesetting}
 \label{sec:mathfont}
@@ -336,11 +351,13 @@ Also included is a showcase of an equation using the font from \package{newtxsf}
 
 \section{Used \textit{Packages}}
 
-In this section, a summary of all \textit{packages} used to implement the class can be found.
+In table \ref{tab:packages}, a summary of all \textit{packages} used to implement the class can be found.
 \begin{table}[ht]
 	\centering
+	\caption{\textit{Packages} loaded by the class without optional arguments, depending on the used compiler.}
+	\label{tab:packages}
 	\begin{tabular}{c|c}\toprule
-		pdf\LaTeX{}				& \makecell{\XeLaTeX{} or \\ \LuaLaTeX{}}	\\
+		pdf\LaTeX{}				& \makecell{\XeLaTeX{} ou \\ \LuaLaTeX{}}	\\
 		\midrule
 		\multicolumn{2}{c}{\package{etoolbox}}				\\
 		\multicolumn{2}{c}{\package{ifluatex}}				\\
@@ -354,7 +371,7 @@ In this section, a summary of all \textit{packages} used to implement the class 
 		\package{inputenc}		&							\\
 		\package{fontenc}		&							\\
 		\phantom{polyglossia}	& \package{fontspec}		\\
-		\package{babel}			& \package{polyglossia}		\\
+		\multicolumn{2}{c}{\package{babel}}				    \\
 		\package{tgheros}		&							\\
 		\package{inconsolata}	&							\\
 		\multicolumn{2}{c}{\package{newtxsf}}				\\
@@ -364,8 +381,6 @@ In this section, a summary of all \textit{packages} used to implement the class 
 		\multicolumn{2}{c}{\package{totpages}}				\\
 		\bottomrule
 	\end{tabular}
-	\caption{\textit{Packages} loaded by the class without optional arguments, depending on the used compiler.}
-	\label{tab:packages}
 \end{table}
 
 \end{document}

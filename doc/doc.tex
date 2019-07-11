@@ -1,5 +1,5 @@
 % arara: xelatex: { synctex: yes, shell: yes }
-\documentclass{../ist-thesis}
+\documentclass{ist-thesis}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -25,7 +25,8 @@
 	\par\bigskip\smallskip
 	Daniel de Schiffart \\
 	{\small com apoio de} \\
-	{\setstretch{1}João Gonçalves \\}
+	João Gonçalves \\
+	João Lourenço \bigskip \\
 	\url{https://github.com/ekspek/ist-thesis}
 \end{center}
 
@@ -48,7 +49,7 @@ Eu aprendi a utilizar \LaTeX{} à dois anos, no início quarto ano, e como toda 
 
 Este projeto começou no final do ano passado como uma brincadeira. Estava a começar a apanhar o ritmo do \LaTeX{} e começava a reparar o quanto reutilizava certas \textit{packages}, certas definições, enfim, sempre o mesmo código em cada relatório que fazia. Considerando que as classes de \LaTeX{} definiam já um molhe de coisas quando são carregadas, comecei a ter isso em conta, olhando para as classes de \LaTeX{} online, nem pensava que fosse capaz de escrever uma de raíz. Mas o aspeto mente; é pura e simplesmente código \LaTeX{}, e embora fossem precisos uns trambolhões, lá apareceu o código a pouco e pouco.
 
-Muito deste trabalho transpõe o que aprendi a escrever a classe \href{https://github.com/ekspek/ist-relatorio}{\texttt{ist-relatorio}}, um projeto mais experimental e \textit{kaleidoscpópico} que mesmo assim ainda se prova útil queando preciso dele. Embora menos versátil, esta classe aqui ainda colocou vários desafios na interface entre o utilizador e o \textit{output}, mas acho que em geral o produto final está com bom aspeto, e ainda preservando alguma versatilidade. Aliás, para provar essa versatilidade, decidi implementar esta mesma documentação utilizando a classe, só mesmo por curiosidade, para ver se resultava. Eu sei que o abuso do \textit{Arial} em todas as páginas queima os olhos a ver, mas o Técnico é que manda \verb|¯\_('_')_/¯|
+Muito deste trabalho transpõe o que aprendi a escrever a classe \href{https://github.com/ekspek/ist-relatorio}{\texttt{ist-relatorio}}, um projeto mais experimental e \textit{kaleidoscpópico} que mesmo assim ainda se prova útil quando preciso dele. Embora menos versátil, esta classe aqui ainda colocou vários desafios na interface entre o utilizador e o \textit{output}, mas acho que em geral o produto final está com bom aspeto, e ainda preservando alguma versatilidade. Aliás, para provar essa versatilidade, decidi implementar esta mesma documentação utilizando a classe, só mesmo por curiosidade, para ver se resultava. Eu sei que o abuso do \textit{Arial} em todas as páginas queima os olhos a ver, mas o Técnico é que manda \verb|¯\_('_')_/¯|
 
 A inspiração principal de passar para a tese foi o meu prazo para tal a reduzir mais e mais, mas também observar os inúmeros modelos de tese que estão espalhados pela net, para as mais variadas universidades à volta do mundo. Não fazia sentido ver o Técnico ficar para trás, especialmente considerando a \textit{imensa imensa} progressividade tecnológica deste nosso cantinho da Universidade de Lisboa. Menções especiais para o modelo de tese da TUDelft, criado à imagem do \textit{Huisstijl} deles, que li e reli para aprender a criar classes.
 
@@ -162,6 +163,7 @@ Os ambientes estão defindos em \LaTeX{} como listado a seguir.
 	\item [\texttt{dedication}] Dedicatória.
 	\item [\texttt{acknowledgements}] Agradecimentos.
 	\item [\texttt{tabstract}] Resumo. Este ambiente introduz palavras-chave no final da página, que podem ser escritas via um argumento opcional do ambiente. Consulte a secção \ref{sec:env_example} para a sintaxe de utilização.
+	\item [\texttt{fabstract}] Resumo na língua alternativa. Este ambiente é idêntico ao \texttt{tabstract}, mas deteta a língua utilizada no resto do documento e utiliza a língua contrária (inglês no caso do português, português no caso do inglês).
 \end{description}
 
 O texto escrito dentro destes ambientes é colocado numa página em separado para cada um, e aparecem no documento na ordem em que são escritos no texto.
@@ -180,9 +182,14 @@ Exemplo de utilização dos ambientes fornecidos. Note-se que no ambiente do res
 \end{acknowledgements}
 
 
-\begin{tabstract}{Resumo, Palavras-Chave, Resumo Analítico, \textit{Abstract}}
+\begin{tabstract}{Resumo, Palavras-Chave, Resumo Analítico}
     Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
 \end{tabstract}
+
+
+\begin{fabstract}{Abstract}
+	The abstract describes the objective, the content of the project and the conclusions. It must be written in both portuguese and english, with a maximum of 250 words, accompanied by 4 to 6 keywords.
+\end{fabstract}
 \end{minted}
 
 \section{Comandos Internos}\label{sec:internal}
@@ -235,6 +242,9 @@ Seguidos estão os ambientes disponíveis.
 
 \begin{tabstract}{}
 \end{tabstract}
+
+\begin{fabstract}{}
+\end{fabstract}
 \end{minted}
 
 Por fim, os comandos internos.
@@ -335,9 +345,11 @@ Também incluído aqui está uma demonstração de uma equação no tipo de letr
 
 \section{\textit{Packages} Utilizadas}
 
-Fica nesta secção um resumo de todas as \textit{packages} utilizadas na implementação da classe.
+Fica na tabela \ref{tab:packages} um resumo de todas as \textit{packages} utilizadas na implementação da classe.
 \begin{table}[ht]
 	\centering
+	\caption{\textit{Packages} carregadas pela classe sem argumentos opcionais, dependendo do compilador utilizado.}
+	\label{tab:packages}
 	\begin{tabular}{c|c}\toprule
 		pdf\LaTeX{}				& \makecell{\XeLaTeX{} ou \\ \LuaLaTeX{}}	\\
 		\midrule
@@ -353,7 +365,7 @@ Fica nesta secção um resumo de todas as \textit{packages} utilizadas na implem
 		\package{inputenc}		&							\\
 		\package{fontenc}		&							\\
 		\phantom{polyglossia}	& \package{fontspec}		\\
-		\package{babel}			& \package{polyglossia}		\\
+		\multicolumn{2}{c}{\package{babel}}				    \\
 		\package{tgheros}		&							\\
 		\package{inconsolata}	&							\\
 		\multicolumn{2}{c}{\package{newtxsf}}				\\
@@ -363,8 +375,6 @@ Fica nesta secção um resumo de todas as \textit{packages} utilizadas na implem
 		\multicolumn{2}{c}{\package{totpages}}				\\
 		\bottomrule
 	\end{tabular}
-	\caption{\textit{Packages} carregadas pela classe sem argumentos opcionais, dependendo do compilador utilizado.}
-	\label{tab:packages}
 \end{table}
 
 \end{document}
