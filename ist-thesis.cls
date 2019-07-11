@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/06/13 v1.0.5 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/07/11 v1.1.0 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -65,8 +65,8 @@
 \newbool{@bw}
 
 % Bind the class option interface to the respective booleans
-\DeclareOption{portuguese}	{\booltrue{@portuguese}}
-\DeclareOption{english}		{\booltrue{@english}}
+\DeclareOption{portuguese}	{\booltrue{@portuguese}\PassOptionsToClass{portuguese}{report}}
+\DeclareOption{english}		{\booltrue{@english}\PassOptionsToClass{english}{report}}
 \DeclareOption{origmath}	{\booltrue{@origmath}}
 \DeclareOption{bw}			{\booltrue{@bw}}
 
@@ -112,16 +112,6 @@
 	}{}
 	\renewcommand{\familydefault}{\sfdefault}
 	\setmonofont[Scale = 1.14]{InconsolataN}
-
-	% Language settings
-	\RequirePackage{polyglossia}
-	\ifbool{@portuguese}{
-		\setmainlanguage{portuges}
-		\setotherlanguage[variant = british]{english}
-	}{
-		\setmainlanguage[variant = british]{english}
-		\setotherlanguage{portuges}
-	}
 }{
 	% Font settings
 	\RequirePackage[utf8]{inputenc}
@@ -129,14 +119,12 @@
 	\RequirePackage{tgheros}
 	\renewcommand{\familydefault}{\sfdefault}
 	\RequirePackage[scaled = 1.14, narrow]{inconsolata}
-
-	% Language settings
-	\ifbool{@portuguese}
-		{ \PassOptionsToPackage{english, main = portuguese}{babel} }
-		{ \PassOptionsToPackage{portuguese, main = english}{babel} }
-
-	\RequirePackage{babel}
 }
+
+% Language settings
+\ifbool{@portuguese}
+	{ \RequirePackage[main = portuguese, english]{babel} }
+	{ \RequirePackage[main = english, portuguese]{babel} }
 
 % Load the newtxsf math font (engine agnostic) if origmath isn't activated
 \notbool{@origmath}{\RequirePackage{newtxsf}}{}
@@ -319,15 +307,50 @@
 	\newpage
 	\newcommand*\abskey[1]{#1}
 	\vspace*{60mm}
-	\ifbool{@english}
-		{ {\centering\section*{Abstract}} }
-		{ {\centering\section*{Resumo}} }
-	\noindent
+
+	\begin{center}
+		\ifbool{@english}
+			{ \section*{Abstract} }
+			{ \section*{Resumo} }
+	\end{center}
 }{
 	\par\vspace{\fill}
 	\ifbool{@english}
 		{ {\noindent\large\textbf{Keywords:} \abskey{}} }
 		{ {\noindent\large\textbf{Palavras-Chave:} \abskey{}} }
+	\cleardoublepage
+}
+
+% Foreign language abstract environment
+% Identical to tabstract except for the language definitions
+\newenvironment{fabstract}[1]{
+	\newpage
+	\newcommand*\abskey[1]{#1}
+	\vspace*{60mm}
+	\ifbool{@english}{
+		\begingroup
+		\selectlanguage{portuguese}
+		\begin{center}
+			\section*{Resumo}
+		\end{center}
+	}{
+		\begingroup
+		\selectlanguage{english}
+		\begin{center}
+			\section*{Abstract}
+		\end{center}
+	}
+}{
+	\par\vspace{\fill}
+	\ifbool{@english}{
+		{\noindent\large\textbf{Palavras-Chave:} \abskey{}}
+		\endgroup
+		\selectlanguage{english}
+	}{
+		{\noindent\large\textbf{Keywords:} \abskey{}}
+		\endgroup
+		\selectlanguage{portuguese}
+	}
 	\cleardoublepage
 }
 
