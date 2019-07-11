@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/07/11 v1.1.0 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/07/11 v1.1.1 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -123,8 +123,8 @@
 
 % Language settings
 \ifbool{@portuguese}
-	{ \RequirePackage[main = portuguese, english]{babel} }
-	{ \RequirePackage[main = english, portuguese]{babel} }
+	{ \RequirePackage[main = portuguese, british]{babel} }
+	{ \RequirePackage[main = british, portuguese]{babel} }
 
 % Load the newtxsf math font (engine agnostic) if origmath isn't activated
 \notbool{@origmath}{\RequirePackage{newtxsf}}{}
