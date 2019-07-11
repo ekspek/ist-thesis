@@ -4,7 +4,7 @@ Master degree thesis template tailored for Instituto Superior Técnico. This pro
 
 ## Use
 
-To compile a LaTeX document with this class, it is only needed to download the file [`ist-thesis.cls`](https://github.com/ekspek/ist-thesis/releases/download/v1.0.0/ist-thesis.cls).
+To compile a LaTeX document with this class, it is only needed to download the file [`ist-thesis.cls`](https://github.com/ekspek/ist-thesis/releases/download/v1.1.0/ist-thesis.cls).
 1. Place the file `ist-thesis.cls` in the same directory as the `.tex` file you wish to compile;
 2. Include the following line in the beginning of the file;
 ```tex

@@ -6,16 +6,16 @@ Modelo de tese de mestrado em LaTeX não oficial para documentos escritos para o
 
 ## Utilização
 
-Para compilar um documento em LaTeX com esta classe, só é necessário fazer download do ficheiro [`ist-thesis.cls`](https://github.com/ekspek/ist-thesis/releases/download/v1.0.0/ist-thesis.cls).
+Para compilar um documento em LaTeX com esta classe, só é necessário fazer download do ficheiro [`ist-thesis.cls`](https://github.com/ekspek/ist-thesis/releases/download/v1.1.0/ist-thesis.cls).
 1. Colocar o ficheiro `ist-thesis.cls` na mesma pasta que o documento `.tex` a compilar;
 2. Incluir a linha abaixo no início do ficheiro;
-````tex
+```tex
 \documentclass{ist-thesis}
-````
+```
    - Opções podem ser incluídas entre parênteses retos entre `\documentclass` e `{ist-thesis}`, como no exemplo seguinte. As opções utilizáveis encontrar-se-ão na documentação quando esta for disponibilizada.
-````tex
+```tex
 \documentclass[english]{ist-thesis}
-````
+```
 3. Compilar o documento.
 
 ### Compilação
@@ -46,7 +46,7 @@ Os erros, objetivos e outras discussões podem ser criadas e encontradas na pág
 
 ### Estado Atual do Projeto
 
-O projeto neste momento encontra-se em desenvolvimento, não estando num estado 100% utilizável para qualquer tese ou dissertação. No entanto, a grande parte das funções está funcional e com o auxílio da documentação uma tese pode ser já escrita com esta classe, sendo apenas adicionar manualmente a bibliografia, o glossário e a lista de acrónimos e símbolos.
+O projeto neste momento encontra-se concluído e pronto a ser utilizado. Não implica, no entanto, que possa ser atualizado ou alterado com o passar do tempo. Recomenda-se, portanto, que se atualize o ficheiro quando houver atualizações nesta página, ou pelo menos quando houver uma [*release*](https://github.com/ekspek/ist-thesis/releases) nova.
 
 O progresso pode também ser observado na página de [*Issues*](https://github.com/ekspek/ist-thesis/issues) do GitHub.
 
