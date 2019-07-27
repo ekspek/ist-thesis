@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/07/11 v1.1.1 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2019/07/27 v1.1.2 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -275,6 +275,23 @@
 	\end{center}
 	\cleardoublepage
 	\end{titlepage}
+}
+
+% Create the spine and attribute it to the makespine command
+\newrobustcmd{\makespine}{
+	\newpage
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture, overlay]
+		\newlength{\spinewidth}\setlength\spinewidth{2.5cm}
+		\path (current page.north) coordinate (spinenorth) ++(-0.5\spinewidth,0) coordinate (spinenorthwest) ++(\spinewidth,0) coordinate (spinenortheast);
+		\path (current page.south) coordinate (spinesouth) ++(-0.5\spinewidth,0) coordinate (spinesouthwest) ++(\spinewidth,0) coordinate (spinesoutheast);
+		\path (spinenorth) -- coordinate (spinecenter) (spinesouth);
+		\path (spinesouth) ++(0,2cm) coordinate (logopos); 
+		%
+		\path [draw, dashed, darkgray] (spinenorthwest) -- (spinenortheast) -- (spinesoutheast) -- (spinesouthwest) -- cycle;
+		\node [rotate = 90, anchor = west, inner sep = 0pt] at (logopos) {\includegraphics[trim = {172.4pt 202.7pt 172.6pt 201.4pt}, clip, height = 0.4\spinewidth]{graphics/IST_A_CMYK_POS.pdf}};
+		\node at (spinecenter) [rotate = 90, anchor = center, align = center, inner sep = 0pt] {\textbf{\large{\ttitle{}}}\\\tsubtitle{}\\\textbf{\tauthor{}}};
+	\end{tikzpicture}
 }
 
 % Define the dedication environment
