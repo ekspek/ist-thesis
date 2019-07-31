@@ -138,6 +138,8 @@
 % Default IST regulations
 \geometry{a4paper,margin = 2.5cm}
 \setstretch{1.5}
+% Prevent paragraph alignment between odd and even pages
+\raggedbottom
 
 % Caption definitions, not mandatory but look a bit better
 \captionsetup{labelfont = bf, margin = 15pt}
