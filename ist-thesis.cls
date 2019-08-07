@@ -135,6 +135,9 @@
 \RequirePackage{caption}
 \RequirePackage{totpages}
 
+% Package to change chapter style
+\RequirePackage{titlesec}
+
 % Default IST regulations
 \geometry{a4paper,margin = 2.5cm}
 \setstretch{1.5}
@@ -170,6 +173,25 @@
 	\preto\listoftables{\begingroup\hypersetup{linkcolor = black}}
 	\appto\listoftables{\endgroup}
 }
+
+% Experiment with the chapter style
+\titleformat{\chapter}[display]
+	{\bfseries\filcenter\huge}
+	{
+		\begin{tikzpicture}[x = 0.2cm, y = 0.2cm]
+			\coordinate (c1) at (0,0);
+			\coordinate (c2) at (11,0);
+			\coordinate (c3) at (11,-5);
+			\coordinate (c4) at (5.5,-13);
+			\coordinate (c5) at (0,-5);
+			\coordinate (center) at (5.5,-6.5);
+			\coordinate (text) at (5.5,-5.5);
+			\draw [very thick, color = {black}] (c1) to (c2) to (c3) to [out = -90, in = 30] (c4) to [out = 150, in = -90] (c5) to cycle;
+			\node (pageno) at (text) [align = center] {\Huge\thechapter};
+		\end{tikzpicture}
+	}
+	{0pt}
+	{\Huge}
 
 % Define a warning if the document surpasses 100 pages (IST rules)
 \def\maxPages{100}
