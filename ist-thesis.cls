@@ -200,6 +200,7 @@
 \newrobustcmd*\tcoverimage{example-image}
 \newrobustcmd*\tcoverimagewidth{0.5}
 \newrobustcmd*\tand{\\ &}
+\newrobustcmd*\tcoverbacktext{}
 
 % Default values for class metadata (language dependent)
 \ifbool{@english}{
@@ -228,6 +229,7 @@
 	\renewcommand\tcoverimage{#2}
 	\renewcommand\tcoverimagewidth{#1}
 }
+\newrobustcmd*\setcoverbacktext[1]{\renewcommand\tcoverbacktext{#1}}
 
 % Create the cover layout and attribute it to the makecover command
 \newrobustcmd{\makecover}{
@@ -275,6 +277,13 @@
 		\par\vspace{10mm}
 		{\large\bfseries \tdate{}}
 	\end{center}
+	\newpage
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\small\setstretch{1}\noindent
+	\begin{flushleft}
+		\textcolor{gray}{\tcoverbacktext}
+	\end{flushleft}
 	\cleardoublepage
 	\end{titlepage}
 }
