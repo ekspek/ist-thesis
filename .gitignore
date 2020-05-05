@@ -5,6 +5,9 @@
 ## Ignore assisting documentation
 doc/extra/
 
+## Ignore tags file
+tags
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

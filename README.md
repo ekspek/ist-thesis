@@ -12,7 +12,7 @@ Para compilar um documento em LaTeX com esta classe, só é necessário fazer do
 ```tex
 \documentclass{ist-thesis}
 ```
-   - Opções podem ser incluídas entre parênteses retos entre `\documentclass` e `{ist-thesis}`, como no exemplo seguinte. As opções utilizáveis encontrar-se-ão na documentação quando esta for disponibilizada.
+   - Opções podem ser incluídas entre parênteses retos entre `\documentclass` e `{ist-thesis}`, como no exemplo seguinte. As opções utilizáveis encontram-se na documentação.
 ```tex
 \documentclass[english]{ist-thesis}
 ```
@@ -34,7 +34,7 @@ Os logótipos oficiais do Instituto Superior Técnico estão incluídos neste re
 
 A documentação que é disponibilizada inclui detalhes sobre o conteúdo da classe e como melhor fazer uso das funções incluídas. Pode ser consultada neste [link](doc/doc.pdf) ou na pasta [doc](doc/) deste repositório, onde se encontra acompanhada do código fonte.
 
-Está também incluído um exemplo de uma tese com formato *lorem ipsum* para exemplificar algumas das funções da classe em si e também algumas (na minha opinião) boas práticas na escrita de documentos em LaTeX. Esta encontra-se na base do repositório ou neste [link](thesis.pdf).
+Foi também preparado um exemplo de uma tese com formato *lorem ipsum* para exemplificar algumas das funções da classe em si e também algumas (na minha opinião) boas práticas na escrita de documentos em LaTeX. Este encontra-se num [repositório separado](https://github.com/ekspek/ist-thesis-template) que acompanha este. Também irá aparecer na galeria do Overleaf quando a submissão for aprovada.
 
 Poderá também vir a ser incluído um documento de ajuda com a criação da tese, separado da documentação oficial, para auxiliar em diversos aspetos de LaTeX.
 
@@ -54,7 +54,7 @@ O progresso pode também ser observado na página de [*Issues*](https://github.c
 
 Este projeto não é o primeiro nem será o útlimo modelo de tese em LaTeX feito pela comunidade do IST. Em comparação a outros modelos, no entanto, este tem o objetivo de ser simples de utilizar, não distribuíndo um modelo pronto para ser subtituído com texto do autor mas sim fornecendo uma base para tal, definindo as regras e restrições da Direcção Académica e permitindo ao utilizador definir o resto como preferir, tentando não interferir com a experiência típica de LaTeX e da classe `report`. É, portanto, um projeto mais indicado a utilizadores com alguma experiência em LaTeX e que se sintam confortáveis a criar um documento de raíz (ou copiando trabalhos anteriores).
 
-No entanto, para quem precisar, incluí um exemplo de tese para auxiliar com os aspetos que a classe de tese aqui distribuída não cobre. Também estou disponível para contactar com quem precisar de ajuda com LaTeX, dentro dos meus conhecimentos. Os contactos estão incluídos acima.
+No entanto, para quem precisar, criei [um exemplo de tese](https://github.com/ekspek/ist-thesis-template) para auxiliar com os aspetos que a classe de tese aqui distribuída não cobre. Também estou disponível para contactar com quem precisar de ajuda com LaTeX, dentro dos meus conhecimentos. Os contactos estão incluídos acima.
 
 ## Referências
 
