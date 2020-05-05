@@ -20,7 +20,7 @@
   % at https://github.com/ekspek/ist-thesis
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ist-thesis}[2019/08/16 v1.1.3 Unofficial IST thesis class]
+\ProvidesClass{ist-thesis}[2020/05/05 v1.1.4 Unofficial IST thesis class]
 
 \typeout{_____________________________________________________________________________}
 \typeout{_____________________________________________________________________________}
@@ -194,6 +194,7 @@
 % Defining class metadata variables for various purposes
 \newrobustcmd*\tsubtitle{}
 \newrobustcmd*\tsupervisor{Prof. Lorem Ipsum \tand Prof. Lorem Ipsum}
+\newrobustcmd*\tcsupervisor{Prof. Lorem Ipsum}
 \newrobustcmd*\tchairperson{Prof. Lorem Ipsum}
 \newrobustcmd*\tcommittee{Prof. Lorem Ipsum \tand Prof. Lorem Ipsum}
 \newrobustcmd*\tinstitution{Instituto Superior Técnico}
@@ -223,6 +224,7 @@
 \newrobustcmd*\setinstitution[1]{\renewcommand\tinstitution{#1}}
 \newrobustcmd*\setdate[1]{\renewcommand\tdate{#1}}
 \newrobustcmd*\setsupervisor[1]{\renewcommand\tsupervisor{#1}}
+\newrobustcmd*\setcsupervisor[1]{\renewcommand\tcsupervisor{#1}}
 \newrobustcmd*\setchairperson[1]{\renewcommand\tchairperson{#1}}
 \newrobustcmd*\setcommittee[1]{\renewcommand\tcommittee{#1}}
 \newrobustcmd*\setcoverimage[2][0.5]{
@@ -269,7 +271,7 @@
 				\ifbool{@english}
 					{Chairperson:}{Presidente:}				& \tchairperson{}		\\
 				\ifbool{@english}
-					{Supervisor:}{Orientador:}				& \tsupervisor{}		\\
+					{Supervisor:}{Orientador:}				& \tcsupervisor{}		\\
 				\ifbool{@english}
 					{Members of the Committee:}{Vogais:}	& \tcommittee{}
 			\end{tabular}

@@ -1,4 +1,4 @@
-% arara: xelatex: { synctex: yes }
+% arara: lualatex: { synctex: yes, shell: yes }
 \documentclass[english]{ist-thesis}
 
 \usepackage{amsmath}
@@ -39,7 +39,7 @@ This class aims to prepare and format any \LaTeX{} document as a Master's thesis
 
 \vspace{\fill}
 \begin{center}
-    \textit{Document translated to English by João Lourenço}
+	\textit{Document translated to English by João Lourenço}
 \end{center}
 
 \tableofcontents
@@ -98,10 +98,10 @@ More properties of this class can be found in the next chapters.
 
 When loading the class, with the command \mintinline{tex}{\documentclass}, it's possible to give optional arguments to define global options. These arguments are listed here.
 \begin{description}
-    \item [portuguese] Sets the document's language to Portuguese, mainly the syntax of macros and keywords, such as índice (table of contents) and resumo (summary). This option is selected by default, and as such does not need to be set.
-        \item [english] Sets the document's language as English. Similar to the \texttt{portuguese} option. 
+	\item [portuguese] Sets the document's language to Portuguese, mainly the syntax of macros and keywords, such as índice (table of contents) and resumo (summary). This option is selected by default, and as such does not need to be set.
+	\item [english] Sets the document's language as English. Similar to the \texttt{portuguese} option.
 	\item [\texttt{bw}] Enables the black and white option. Replaces all occurences of cyan on the document, such as in links and URLs.
-        \item [\texttt{origmath}] Returns the math font initially loaded by \LaTeX{}. Follows from the discussion on section \ref{sec:mathfont}, and avoids loading the \textit{package} \package{newtxsf}.
+	\item [\texttt{origmath}] Returns the math font initially loaded by \LaTeX{}. Follows from the discussion on section \ref{sec:mathfont}, and avoids loading the \textit{package} \package{newtxsf}.
 \end{description}
 
 To enable one or more arguments, insert at the beginning of the file, between square brackets, the arguments to use.
@@ -142,9 +142,10 @@ By itself, this command only returns a cover page with the filled preset values.
 	\item [\texttt{\textbackslash{}setinstitution\{}\textit{<institution>}\texttt{\}}] Sets the institution. Residual command, it's not used on the cover page.
 	\item [\texttt{\textbackslash{}setdate\{}\textit{<date>}\texttt{\}}] Sets the date.
 	\item [\texttt{\textbackslash{}setsupervisor\{}\textit{<supervisor(s)>}\texttt{\}}] Sets the supervisor(s). To set more than one supervisor, check the command to set authors.
+	\item [\texttt{\textbackslash{}setcsupervisor\{}\textit{<supervisor(s)>}\texttt{\}}] Sets the committee supervisor(s). Identical to the previous command, but allows for separating committee from non-committee supervisors if necessary.
 	\item [\texttt{\textbackslash{}setchairperson\{}\textit{<president>}\texttt{\}}] Sets the chairperson..
 	\item [\texttt{\textbackslash{}setcommittee\{}\textit{<committee>}\texttt{\}}] Sets the committee. To set more than one person, check the command to set authors.
-        \item [\texttt{\textbackslash{}setcoverimage[}\textit{<relative width>}\texttt{]\{}\textit{<image>}\texttt{\}}] Sets the cover page image. In this case, it's required to provide the image name, which should be found in the same directory as the document. The syntax is the same as the \mintinline{tex}{\includegraphics} command, but it only accepts one argument, which is the image width relative to the text width - for example, a value of 1 would return an image which spans the cover page from margin to margin.
+	\item [\texttt{\textbackslash{}setcoverimage[}\textit{<relative width>}\texttt{]\{}\textit{<image>}\texttt{\}}] Sets the cover page image. In this case, it's required to provide the image name, which should be found in the same directory as the document. The syntax is the same as the \mintinline{tex}{\includegraphics} command, but it only accepts one argument, which is the image width relative to the text width - for example, a value of 1 would return an image which spans the cover page from margin to margin.
 \end{description}
 
 \subsection{Sample Usage}\label{sec:cmd_example}
@@ -156,6 +157,7 @@ To showcase the usage of the previous section's commands, here's a syntax exampl
 \setauthor{Daniel de Schiffart}
 \setdegree{Mestrado Integrado em Engenharia Aeroespacial}
 \setsupervisor{Supervisor}
+\setcsupervisor{Committee Supervisor}
 \setchairperson{President}
 \setcommittee{Prof. A. \tand Prof. B.}
 \setcoverimage[0.5]{example-image-a}
@@ -164,14 +166,14 @@ To showcase the usage of the previous section's commands, here's a syntax exampl
 \section{Special sections}\label{sec:spec}
 
 When writing a thesis, there are certain sections written by most of the authors. Some of the sections described on the Academic Services are, therefore, implemented on the class through the use of special\footnotemark{} \LaTeX{} environments, so they can be attributed special formatting and make any writing easier. They are three: dedication, acknowledgments, and the abstract.
-    \footnotetext{\LaTeX{} environments are macros similar to commands, but instead of being called once and their content being written inside the arguments, the environments have a beginning and an end, delimited by the \texttt{\textbackslash{}begin} e \texttt{\textbackslash{}end} command. Check the examples of section \ref{sec:env_example}.}
+\footnotetext{\LaTeX{} environments are macros similar to commands, but instead of being called once and their content being written inside the arguments, the environments have a beginning and an end, delimited by the \texttt{\textbackslash{}begin} e \texttt{\textbackslash{}end} command. Check the examples of section \ref{sec:env_example}.}
 
 The environments are defined in \LaTeX{} as follows.
 \begin{description}
 	\item [\texttt{dedication}] Dedication.
 	\item [\texttt{acknowledgements}] Acknowledgements.
-    \item [\texttt{tabstract}] Abstract. This environment adds keywords to the end of the page, which can be written through a special argument. Check the section \ref{sec:env_example} for syntax.
-    \item [\texttt{fabstract}] Abstract. This environment is identical to the previous \texttt{tabstract} environment, but detects the document's language and typesets the abstract in the opposite language (portuguese when english, english when portuguese).
+	\item [\texttt{tabstract}] Abstract. This environment adds keywords to the end of the page, which can be written through a special argument. Check the section \ref{sec:env_example} for syntax.
+	\item [\texttt{fabstract}] Abstract. This environment is identical to the previous \texttt{tabstract} environment, but detects the document's language and typesets the abstract in the opposite language (portuguese when english, english when portuguese).
 \end{description}
 
 The text inside these environments is put into a separate page for each, and they appear in the document in the order written in the file.
@@ -181,21 +183,21 @@ Sample usage of the provided environments. It is worth noting that, in the abstr
 
 \begin{minted}{tex}
 \begin{dedication}
-    To dedicate to whoever you want.
+	To dedicate to whoever you want.
 \end{dedication}
 
 \begin{acknowledgements}
-    Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying.
+	Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying.
 \end{acknowledgements}
 
 
 \begin{tabstract}{Summary, Keywords, Abstract}
-    Summary and keywords (in portuguese and english). The abstract describes the goals, the project's content and the conclusions. It has to be written in portuguese and english, with at most 250 words for each, and be next to 4-6 keywords. 
+	Summary and keywords (in portuguese and english). The abstract describes the goals, the project's content and the conclusions. It has to be written in portuguese and english, with at most 250 words for each, and be next to 4-6 keywords.
 \end{tabstract}
 
 
 \begin{fabstract}{Resumo, Palavras-Chave, Resumo Analítico}
-    Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
+	Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
 \end{fabstract}
 \end{minted}
 
@@ -230,6 +232,7 @@ First, the commands to create the cover page.
 \setinstitution{}
 \setdate{}
 \setsupervisor{}
+\setcsupervisor{}
 \setchairperson{}
 \setcommittee{}
 \setcoverimage[]{}
@@ -341,7 +344,7 @@ The previously mentioned fonts can be seen in this sections. In order: normal fo
 	{\rmfamily\textsample} \\
 	{\bfseries\rmfamily\textsample} \\
 	{$\textsample$} \\
-        {$\bm{\textsample}$} \\
+	{$\bm{\textsample}$} \\
 \end{quote}
 
 Also included is a showcase of an equation using the font from \package{newtxsf}, mentioned in section \ref{sec:mathfont}.
@@ -371,7 +374,7 @@ In table \ref{tab:packages}, a summary of all \textit{packages} used to implemen
 		\package{inputenc}		&							\\
 		\package{fontenc}		&							\\
 		\phantom{polyglossia}	& \package{fontspec}		\\
-		\multicolumn{2}{c}{\package{babel}}				    \\
+		\multicolumn{2}{c}{\package{babel}}					\\
 		\package{tgheros}		&							\\
 		\package{inconsolata}	&							\\
 		\multicolumn{2}{c}{\package{newtxsf}}				\\

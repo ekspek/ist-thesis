@@ -1,4 +1,4 @@
-% arara: xelatex: { synctex: yes, shell: yes }
+% arara: lualatex: { synctex: yes, shell: yes }
 \documentclass{ist-thesis}
 
 \usepackage{amsmath}
@@ -134,6 +134,7 @@ Este comando por si só devolve uma capa com os dados preenchidos com valores pr
 	\item [\texttt{\textbackslash{}setinstitution\{}\textit{<instituição>}\texttt{\}}] Define a instituição. Comando residual, não é utilizado na capa.
 	\item [\texttt{\textbackslash{}setdate\{}\textit{<data>}\texttt{\}}] Define a data.
 	\item [\texttt{\textbackslash{}setsupervisor\{}\textit{<supervisor(es)>}\texttt{\}}] Define o(s) supervisor(es). Para definir mais que um supervisor, consulte o comando para definir autores.
+	\item [\texttt{\textbackslash{}setcsupervisor\{}\textit{<supervisor(es)>}\texttt{\}}] Igual ao comando anterior, mas define o(s) supervisor(es) vogais. Adicionado caso estes sejam diferentes.
 	\item [\texttt{\textbackslash{}setchairperson\{}\textit{<presidente>}\texttt{\}}] Define o presidente.
 	\item [\texttt{\textbackslash{}setcommittee\{}\textit{<vogal(is)>}\texttt{\}}] Define o(s) vogal(is). Para definir mais que um vogal, consulte o comando para definir autores.
 	\item [\texttt{\textbackslash{}setcoverimage[}\textit{<largura relativa>}\texttt{]\{}\textit{<imagem>}\texttt{\}}] Define a imagem de capa. Neste caso, é necessário dar o nome da imagem que se deve encontrar no mesmo diretório que o documento. A sintaxe é igual ao comando \mintinline{tex}{\includegraphics}, excepto que só aceita um argumento, a largura da imagem em relação à largura de texto (portanto um valor de 1 devolveria uma imagem que cobre a capa de margem a margem).
@@ -148,6 +149,7 @@ Para exemplificar o uso dos comandos da secção anterior, está aqui incluído 
 \setauthor{Daniel de Schiffart}
 \setdegree{Mestrado Integrado em Engenharia Aeroespacial}
 \setsupervisor{Prof. Supervisor}
+\setcsupervisor{Prof. Supervisor Vogal}
 \setchairperson{Presidente}
 \setcommittee{Prof. A. \tand Prof. B.}
 \setcoverimage[0.5]{example-image-a}
@@ -174,16 +176,16 @@ Exemplo de utilização dos ambientes fornecidos. Note-se que no ambiente do res
 
 \begin{minted}{tex}
 \begin{dedication}
-    Para dedicar a quem quiser.
+	Para dedicar a quem quiser.
 \end{dedication}
 
 \begin{acknowledgements}
-    Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying.
+	Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying.
 \end{acknowledgements}
 
 
 \begin{tabstract}{Resumo, Palavras-Chave, Resumo Analítico}
-    Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
+	Resumo e palavras-chave (em português e em inglês). O resumo analítico, também designado por resumo ou abstract, descreve o objectivo, o conteúdo do trabalho e as conclusões. Deve ser escrito em português e inglês, com um máximo de 250 palavras cada e acompanhado de 4 a 6 palavras-chave.
 \end{tabstract}
 
 
@@ -223,6 +225,7 @@ Primeiramente temos os comandos para criar a capa.
 \setinstitution{}
 \setdate{}
 \setsupervisor{}
+\setcsupervisor{}
 \setchairperson{}
 \setcommittee{}
 \setcoverimage[]{}
