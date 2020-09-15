@@ -2,7 +2,7 @@
 
 [Read this page in english.](README_EN.md)
 
-Modelo de tese de mestrado em LaTeX não oficial para documentos escritos para o Instituto Superior Técnico. Este projeto tem como objetivo criar uma classe de LaTeX que define todas as restrições definidas pelo Instituto Superior Técnico por defeito quando incluída e implementa funções adicionais para definir pormenores do documento e permitir um certo nível de personalização dentro das restrições possíveis.
+Modelo de tese de mestrado em LaTeX não oficial para documentos escritos para o Instituto Superior Técnico. Este projeto tem como objetivo criar uma classe de LaTeX que define todas as restrições definidas pelo Instituto Superior Técnico por defeito quando incluída e implementa funções adicionais para definir pormenores do documento e permitir um certo nível de personalização dentro das restrições existentes.
 
 ## Utilização
 
@@ -46,13 +46,13 @@ Os erros, objetivos e outras discussões podem ser criadas e encontradas na pág
 
 ### Estado Atual do Projeto
 
-O projeto neste momento encontra-se concluído e pronto a ser utilizado. Não implica, no entanto, que possa ser atualizado ou alterado com o passar do tempo. Recomenda-se, portanto, que se atualize o ficheiro quando houver atualizações nesta página, ou pelo menos quando houver uma [*release*](https://github.com/ekspek/ist-thesis/releases) nova.
+O projeto neste momento encontra-se concluído e pronto a ser utilizado. Não implica, no entanto, que não possa ser atualizado ou alterado com o passar do tempo. Recomenda-se, portanto, que se atualize o ficheiro quando houver atualizações nesta página, ou pelo menos quando houver uma [*release*](https://github.com/ekspek/ist-thesis/releases) nova.
 
 O progresso pode também ser observado na página de [*Issues*](https://github.com/ekspek/ist-thesis/issues) do GitHub.
 
 #### Considerações sobre este projeto
 
-Este projeto não é o primeiro nem será o útlimo modelo de tese em LaTeX feito pela comunidade do IST. Em comparação a outros modelos, no entanto, este tem o objetivo de ser simples de utilizar, não distribuíndo um modelo pronto para ser subtituído com texto do autor mas sim fornecendo uma base para tal, definindo as regras e restrições da Direcção Académica e permitindo ao utilizador definir o resto como preferir, tentando não interferir com a experiência típica de LaTeX e da classe `report`. É, portanto, um projeto mais indicado a utilizadores com alguma experiência em LaTeX e que se sintam confortáveis a criar um documento de raíz (ou copiando trabalhos anteriores).
+Este projeto não é o primeiro nem será o último modelo de tese em LaTeX feito pela comunidade do IST. Em comparação a outros modelos, no entanto, este tem o objetivo de ser simples de utilizar, não distribuíndo um modelo pronto para ser subtituído com texto do autor mas sim fornecendo uma base para tal, definindo as regras e restrições da Direcção Académica e permitindo ao utilizador definir o resto como preferir, tentando não interferir com a experiência típica de LaTeX e da classe `report`. É, portanto, um projeto mais indicado a utilizadores com alguma experiência em LaTeX e que se sintam confortáveis a criar um documento de raíz (ou copiando trabalhos anteriores).
 
 No entanto, para quem precisar, criei [um exemplo de tese](https://github.com/ekspek/ist-thesis-template) para auxiliar com os aspetos que a classe de tese aqui distribuída não cobre. Também estou disponível para contactar com quem precisar de ajuda com LaTeX, dentro dos meus conhecimentos. Os contactos estão incluídos acima.
 
